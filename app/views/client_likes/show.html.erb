@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @client_like %>
+
+<div>
+  <%= link_to "Edit this client like", edit_client_like_path(@client_like) %> |
+  <%= link_to "Back to client likes", client_likes_path %>
+
+  <%= button_to "Destroy this client like", @client_like, method: :delete %>
+</div>

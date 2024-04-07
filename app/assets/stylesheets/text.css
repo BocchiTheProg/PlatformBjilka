@@ -1,0 +1,40 @@
+body {
+    color: #03071E;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a, button {
+    color: DC2F02;
+}
+
+h1 {
+    font-size: 32px; 
+    font-weight: bold; 
+    color: #370617;
+    margin-bottom: 50px; 
+  }
+
+.title-lg {
+    font-size: 175%;
+
+}
+
+.title-md, .title {
+    font-size: 150%;
+}
+
+.title-sm {
+    font-size: 125%;
+}
+
+.text-sm {
+    font-size: 80%;
+}
+
+.text-grey {
+    color: #a0a0a0;
+}
+
+.text-bold {
+    font-weight: bold;
+}

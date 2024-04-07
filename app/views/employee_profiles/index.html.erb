@@ -1,0 +1,16 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+  <h2 class="title-lg mb">Employee profiles</h2>
+
+  <div id="employee_profiles">
+    <% @employee_profiles.each do |employee_profile| %>
+      <div class="user-card mt-ls">
+        <%= render employee_profile %>
+      </div>
+      <div class="mt-md mb-ls">
+      <%= link_to 'Select', new_order_path(employee_id: employee_profile.id), class: 'button button-yellow mr-sm' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

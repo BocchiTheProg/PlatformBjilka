@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @difficulty %>
+
+<div>
+  <%= link_to "Edit this difficulty", edit_difficulty_path(@difficulty) %> |
+  <%= link_to "Back to difficulties", difficulties_path %>
+
+  <%= button_to "Destroy this difficulty", @difficulty, method: :delete %>
+</div>

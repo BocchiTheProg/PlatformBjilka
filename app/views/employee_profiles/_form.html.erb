@@ -1,0 +1,58 @@
+<%= form_with(model: employee_profile) do |form| %>
+  <% if employee_profile.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(employee_profile.errors.count, "error") %> prohibited this employee_profile from being saved:</h2>
+
+      <ul>
+        <% employee_profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mt">
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name, autofocus: true, class: 'form-text-field' %>
+  </div>
+
+  <div class="field mt">
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name, class: 'form-text-field' %>
+  </div>
+
+  <div class="field mt">
+    <%= form.label :phone, style: "display: block" %>
+    <%= form.text_field :phone, class: 'form-text-field' %>
+  </div>
+
+
+  <div class="field mt">
+    <%= form.label :date_registration, style: "display: block" %>
+    <%= form.datetime_field :date_registration, class: 'form-text-field' %>
+  </div>
+
+
+  <div class="field mt">
+    <%= form.label :specialization_id, style: "display: block" %>
+    <%= form.select :specialization_id, options_for_select(Specialization.all.map { |d| [d.title, d.id] }, prompt: 'Select specialization'), {}, class: 'form-text-field' %>
+  </div>
+
+  <div class="field mt">
+  <%= form.fields_for :employee, employee_profile.employee do |user_fields| %>
+    <div class="field mt">
+      <%= user_fields.label :email, style: "display: block" %>
+      <%= user_fields.text_field :email, class: 'form-text-field', value: employee_profile.employee.email %> 
+    </div>
+
+    <div class="field mt">
+      <%= user_fields.label :password, style: "display: block" %>
+      <%= user_fields.password_field :password, class: 'form-text-field', value: 'current_password' %>
+    </div>
+  <% end %>
+</div>
+
+  <div class="field mt">
+    <%= form.submit "Save", class: 'button button-main' %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Specializations</h1>
+
+<div id="specializations">
+  <% @specializations.each do |specialization| %>
+    <%= render specialization %>
+    <p>
+      <%= link_to "Show this specialization", specialization %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New specialization", new_specialization_path %>

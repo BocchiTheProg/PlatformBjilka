@@ -1,0 +1,45 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; 
+}
+
+.container {
+  display: flex; 
+  flex-wrap: wrap; 
+}
+
+.grid-item {
+  margin-bottom: 10px; 
+  font-size: 24px; 
+  font-weight: bold; 
+  color: #333; 
+  border-bottom: 2px solid #333; 
+  padding-bottom: 5px; 
+  flex: 1; 
+}
+
+
+.service-type-container {
+  margin-bottom: 20px;
+}
+
+.service-list {
+  list-style-type: none; 
+  padding-left: 0; 
+}
+
+.service-list li {
+  margin-bottom: 5px;
+  padding-top: 5px; 
+}
+
+.service-list li a {
+  text-decoration: none; 
+  color: #4e4c4c; 
+}
+
+.service-list li a:hover {
+  text-decoration: underline; 
+  color: #000; 
+}

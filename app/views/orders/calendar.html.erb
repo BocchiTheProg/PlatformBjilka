@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+<style>
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgb(255, 0, 0);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-header:hover {
+  background-color: #c40000;
+}
+
+.custom-link {
+    text-decoration: none; 
+    color: black; 
+    font-weight: bold; 
+    text-align: center;
+    display: inline-block;
+    width: 100%; 
+}
+</style>
+</head>
+
+<body>
+    <div class="container">
+      <%= month_calendar(events: @orders, attribute: :date_order) do |date, orders| %>
+          <%= date.strftime("%d") %>
+        <% orders.each do |order| %>
+          <div class="card-header">
+              <%= link_to Service.find_by(id: order.service_id).title, order_path(order, start_date: date), class: "custom-link" %>
+          </div>
+        <% end %>
+      <% end %>
+    
+
+    <br>
+
+    <div class="mt md">
+      <%= link_to "Back to main page", root_path, class: 'button button-yellow' %> <br />
+    </div>
+    </div>
+</body>
+</html>

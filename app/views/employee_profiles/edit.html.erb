@@ -1,0 +1,12 @@
+<div class="container">
+  <h2 class="title-lg mb">Edit My Profile</h2>
+  <%= render "form", employee_profile: @employee_profile %>
+
+  <br>
+
+  <div>
+    <%= link_to "Show my profile", @employee_profile, class: 'button button-yellow'%> 
+    <%= link_to "Back to main page", root_path, class: 'button button-yellow' %> <br />
+  </div>
+</div>
+

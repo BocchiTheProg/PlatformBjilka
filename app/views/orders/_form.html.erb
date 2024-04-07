@@ -1,0 +1,54 @@
+<%= form_with(model: order) do |form| %>
+  <% if order.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-wrapper">
+  <% if params[:employee_id].present? %>
+    <% employee = EmployeeProfile.find(params[:employee_id]) %>
+    <div class="field mt">
+      <%= form.label :employee_profile_id, style: "display: block" %>
+      <%= form.text_field :employee_profile_id, value: "#{employee.first_name} #{employee.last_name}", class: 'form-text-field', readonly: true %>
+    </div>
+  <% end %>
+
+  <div class="field mt">
+    <%= link_to 'Select Employee', employee_profiles_path, class: 'button button-yellow mr-sm' %>
+  </div>
+
+  <div class="field mt">
+    <%= form.label :urgency_id, style: "display: block" %>
+    <%= form.select :urgency_id, options_for_select(Urgency.all.map { |d| [d.title, d.id] }, prompt: 'Select urgency'), {}, class: 'form-text-field', style: "width: 300px;" %>
+  </div>
+
+  <div class="field mt">
+    <%= form.label :date_order, style: "display: block" %>
+    <%= form.date_field :date_order, class: 'form-text-field' %>
+  </div>
+
+  <div class="field mt">
+    <%= form.label :service_id, style: "display: block" %>
+    <%= form.select :service_id, options_for_select(Service.all.map { |d| [d.title, d.id] }, prompt: 'Select service'), {}, class: 'form-text-field', style: "width: 300px;" %>
+  </div>
+
+  <div class="field mt">
+    <%= form.label :price, style: "display: block" %>
+    <%= form.number_field :price, class: 'form-text-field', min: 1, max: 1000000 %>
+  </div>
+
+  <%= form.hidden_field :client_profile_id, value: current_client.client_profile.id %>
+  <%= form.hidden_field :employee_profile_id, value:params[:employee_id] %>
+
+  <div class="field mt">
+    <%= form.submit "Save", class: 'button button-main' %>
+  </div>
+<% end %>
+</div>

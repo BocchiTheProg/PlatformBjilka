@@ -1,0 +1,59 @@
+<div class="container">
+  <h2 class="title-lg mb">Sign up</h2>
+
+  <% resource.build_employee_profile if resource.employee_profile.nil? %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "employees/shared/error_messages", resource: resource %>
+
+  <div class="form-wrapper">
+    <%= f.fields_for :employee_profile do |ui| %>
+      <div class="field mt">
+        <%= ui.label :first_name %><br />
+        <%= ui.text_field :first_name, autofocus: true, class: 'form-text-field' %>
+      </div>
+
+      <div class="field mt">
+        <%= ui.label :last_name %><br />
+        <%= ui.text_field :last_name, class: 'form-text-field' %>
+      </div>
+
+      <div class="field mt">
+      <%= ui.label :phone %><br />
+      <%= ui.text_field :phone, class: 'form-text-field', pattern: "[0-9]{10}", title: "Please enter 10 digits", onkeypress: "return /[0-9]/i.test(event.key)", maxlength: "10" %>
+      </div>
+
+      <div class="field mt">
+        <%= ui.label :specialization %><br />
+        <%= ui.collection_select :specialization_id, Specialization.all, :id, :title, { prompt: 'Select specialization' }, class: 'form-text-field', style: "width: 300px;" %>
+      </div>
+    <% end %>
+
+    <div class="field mt">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autocomplete: "email", class: 'form-text-field' %>
+    </div>
+
+    <% if @minimum_password_length %>
+      <% min_password_length = @minimum_password_length %>
+    <% end %>
+
+    <div class="field mt">
+      <%= f.label :password do %>
+        Enter password <%= content_tag(:em, "(#{@minimum_password_length} characters minimum") %>)
+      <% end %>
+      <p><%= f.password_field :password, autocomplete: "new-password", class: 'form-text-field' %></p>
+    </div>
+
+    <div class="field mt">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-text-field' %>
+    </div>
+
+    <div class="actions mt">
+      <%= f.submit "Sign up", class: 'button button-main' %>
+    </div>
+
+    <%= render "employees/shared/links" %>
+    <% end %>
+  </div>
+</div>

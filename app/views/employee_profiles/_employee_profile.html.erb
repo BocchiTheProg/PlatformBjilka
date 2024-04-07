@@ -1,0 +1,31 @@
+<div id="<%= dom_id employee_profile %>">
+  <div class="mt-md">
+    <strong>First name:</strong>
+    <%= employee_profile.first_name %>
+  </div>
+
+  <div class="mt-md">
+    <strong>Last name:</strong>
+    <%= employee_profile.last_name %>
+  </div>
+
+  <div class="mt-md">
+    <strong>Phone:</strong>
+    <%= employee_profile.phone %>
+  </div>
+
+  <div class="mt-md">
+    <strong>Date registration:</strong>
+    <%= employee_profile.date_registration %>
+  </div>
+
+  <div class="mt-md">
+    <strong>Specialization:</strong>
+    <%= Specialization.find_by(id: employee_profile.specialization_id).title %>
+  </div>
+
+  <div class="mt-md">
+  <strong>Email:</strong>
+  <%= Employee.find_by(id: employee_profile.employee_id).email %>
+</div>
+</div>

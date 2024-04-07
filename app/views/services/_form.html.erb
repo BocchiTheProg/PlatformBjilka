@@ -1,0 +1,34 @@
+<%= form_with(model: service) do |form| %>
+  <% if service.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
+      
+      <ul>
+        <% service.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mt">
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title, class: 'form-text-field'  %>
+  </div>
+
+  <div class="field mt">
+    <%= form.label :service_type, style: "display: block" %>
+    <%= form.text_field :service_type, class: 'form-text-field'  %>
+  </div>
+
+  <div class="field mt">
+    <%= form.label :difficulty_id, style: "display: block" %>
+    <%= form.select :difficulty_id, options_for_select(Difficulty.all.map { |d| [d.title, d.id] }, prompt: 'Select difficulty'), {}, class: 'form-text-field' %>
+  </div>
+
+  <%= form.hidden_field :employee_profile_id, value:current_employee.id %>
+
+  <div class="field mt">
+    <%= form.submit class: 'button button-main' %>
+  </div>
+<% end %>

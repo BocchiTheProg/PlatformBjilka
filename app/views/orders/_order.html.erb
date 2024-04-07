@@ -1,0 +1,44 @@
+<div id="<%= dom_id order %>">
+  <p>
+    <strong>Status:</strong>
+    <% if order.status.nil? %>
+      Not approved
+    <% else %>
+      <%= Status.find_by(id: order.status_id).title %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Client:</strong>
+    <%= ClientProfile.find_by(id: order.client_profile_id)&.first_name %>
+    <%= ClientProfile.find_by(id: order.client_profile_id)&.last_name %>
+  </p>
+
+  <p>
+    <strong>Employee:</strong>
+    <%= EmployeeProfile.find_by(id: order.employee_profile_id)&.first_name %>
+    <%= EmployeeProfile.find_by(id: order.employee_profile_id)&.last_name %>
+  </p>
+
+
+  <p>
+    <strong>Urgency:</strong>
+    <%= Urgency.find_by(id: order.urgency_id).title %>
+  </p>
+
+  <p>
+    <strong>Date order:</strong>
+    <%= order.date_order.to_date  %>
+  </p>
+
+  <p>
+    <strong>Service:</strong>
+    <%= Service.find_by(id: order.service_id).title %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= "#{order.price} $" %>
+  </p>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <h2 class="title-lg mb">Orders</h2>
+<p style="color: green"><%= notice %></p>
+
+<div id="orders">
+  <% @orders.each do |order| %>
+    <div class="user-card mt-ls">
+    <%= render order %>
+    </div>
+
+    <p class="mt">
+      <%= link_to "Show this order", order, class: 'button button-main' %>
+    </p>
+    <br/>
+  <% end %>
+</div>
+
+  <div class="mt-ls">
+    <%= link_to "Back to profile", :back, class: 'button button-yellow' %>
+    <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
+</div>
+
+</div>

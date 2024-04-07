@@ -1,0 +1,71 @@
+
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <p class="title-md"style="color: green"><%= notice %></p>
+
+        <h1>All Services</h1>
+        <div class="grid-container">
+        <% @services_by_type.each do |service_type, services| %>
+            <div class="service-type-container">
+            <h2 class="grid-item"><%= service_type %></h2>
+            <ul class="service-list">
+                <% services.each do |service| %>
+                <li><%= link_to service.title, service_path(service) %></li>
+                <% end %>
+            </ul>
+            </div>
+        <% end %>
+        </div>
+
+
+        <footer class="footer">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>About us</h4>
+                    <ul>
+                        <li><a href="#">About the Bee project</a></li>
+                        <li><a href="#">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>How it works</h4>
+                    <ul>
+                        <li><a href="#">How to order a service</a></li>
+                        <li><a href="#">How to register an FOP</a></li>
+                        <li><a href="#">Warranty and safety</a></li>
+                        <li><a href="#">Latest reviews</a></li>
+                        <li><a href="#">Top performers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="#">Questions and answers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Public offer</a></li>
+                        <li><a href="#">Support service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+<div class="container">
+  <h2 class="title-lg mb">Service</h2>
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @service %>
+
+  <div class="field mt">
+  <%= link_to "Add to favourites", add_to_favorites_service_path(@service), method: :post, class: 'button button-yellow'  %>
+    <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
+  </div>
+</div>

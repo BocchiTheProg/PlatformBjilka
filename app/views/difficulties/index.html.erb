@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Difficulties</h1>
+
+<div id="difficulties">
+  <% @difficulties.each do |difficulty| %>
+    <%= render difficulty %>
+    <p>
+      <%= link_to "Show this difficulty", difficulty %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New difficulty", new_difficulty_path %>

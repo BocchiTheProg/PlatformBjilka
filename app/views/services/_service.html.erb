@@ -1,0 +1,29 @@
+<div id="<%= dom_id service %>">
+  <div class="mt-md">
+    <strong>Title:</strong>
+    <%= service.title %>
+  </div>
+
+  <div class="mt-sm mb-sm">
+    <strong>Service type:</strong>
+    <%= service.service_type %>
+  </div>
+
+  <% if @service.present? && @service.difficulty.present? %>
+  <div class="mt-sm mb-sm">
+    <strong>Difficulty:</strong>
+    <%= @service.difficulty.title %>
+  </div>
+
+  <div class="mt-sm mb-sm">
+    <strong>Who created:</strong>
+    <% if service.employee_profile_id.present? %>
+      <%= EmployeeProfile.find_by(id: service.employee_profile_id).last_name %>
+    <% else %>
+      Admin
+    <% end %>
+  </div>
+
+<% end %>
+
+</div>

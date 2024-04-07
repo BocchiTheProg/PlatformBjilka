@@ -1,0 +1,18 @@
+<div class="container">
+  <h2 class="title-lg mb">Order</h2>
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @order %>
+  
+  <div class="mt-ls">
+    <%= link_to "Edit this order", edit_order_path(@order), class: 'button button-yellow' %>
+
+    <% if current_client %>
+      <%= link_to "Back to calendar", calendar_path(current_client_id: current_client.id, start_date: params[:start_date]), class: 'button button-yellow' %>
+    <% elsif current_employee %>
+      <%= link_to "Back to calendar", employee_calendar_path(current_employee_id: current_employee.id, start_date: params[:start_date]), class: 'button button-yellow' %>
+    <% end %>  
+
+    <%= button_to "Destroy this order", @order, method: :delete, class: 'button button-main' %>
+  </div>
+</div>

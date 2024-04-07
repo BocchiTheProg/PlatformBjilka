@@ -1,0 +1,70 @@
+#.rubocop.yml
+
+inherit_from:
+  - '.rubocop-performance.yml'
+  - '.rubocop-rails.yml'
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+
+# Bundler
+
+Bundler/DuplicatedGroup:
+  Enabled: false
+
+# Layout
+
+Layout/LineLength:
+  Enabled: false
+
+# Metric
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+# Naming
+
+Naming/VariableName:
+  Enabled: false
+
+# Style
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/SafeNavigation:
+  Enabled: false
+
+Style/StringConcatenation:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/RedundantFetchBlock:
+  Enabled: false

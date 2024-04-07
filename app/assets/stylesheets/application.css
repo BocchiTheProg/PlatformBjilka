@@ -1,0 +1,110 @@
+/*
+    *= require reset
+    *
+    *= require font-awesome  
+    *
+    *= require text
+    *= require spacing
+    *= require layout
+    *= require button 
+    *= require form
+    *
+    *= require message
+    *
+    *= require entity
+    *
+    *= require footer
+    *
+    *= require list
+    *
+    *= require profile
+    *
+    *= require alert
+*/
+
+.simple-calendar {
+    width: 100%;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.day {
+    width: 160px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: left;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 194);
+}
+
+.wday-0 {
+    color: #f00;
+}
+
+.wday-1 {    
+    color: #000;
+}
+
+.wday-2 {    
+    color: #000;
+}
+
+.wday-3 {    
+    color: #000;
+}
+
+.wday-4 {    
+    color: #000;
+}
+
+.wday-5 {    
+    color: #000;
+}
+
+.wday-6 {
+    color: #f00;
+}
+
+.past {
+    color: #ccc ;
+}
+
+.future {
+    color: #000 ;
+}
+
+.start-date {
+    background-color: rgb(255, 255, 194);
+}
+
+.prev-month {
+    color: #ccc;
+    background-color: rgb(255, 255, 232);
+}
+
+.next-month {
+    color: #ccc;
+    background-color: rgb(255, 255, 232);
+}
+
+.current-month {
+    color: #000;
+}
+
+.has-events {
+    color: red;
+    background-color: rgb(255, 255, 194);
+    font-weight: bold;
+}
+
+.today {
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    background-color: rgb(250, 248, 117);
+    border: 3px solid red; 
+}
+

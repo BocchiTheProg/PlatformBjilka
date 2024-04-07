@@ -1,0 +1,14 @@
+<div class="container">
+  <h2 class="title-lg mb">Services</h2>
+  <p style="color: green"><%= notice %></p>
+
+  <% @services.each_with_index do |service, index| %>
+    <div class="user-card mt-ls">
+    <%= render service %>
+    </div>
+  <% end %>
+
+  <div class="field mt">
+    <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
+  </div>
+</div>
