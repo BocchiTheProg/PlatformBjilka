@@ -3,15 +3,19 @@
   <p style="color: green"><%= notice %></p>
 
   <% @services.each_with_index do |service, index| %>
+    <br>
     <div class="user-card mt-ls">
-    <%= render service %>
+      <%= render service %>
     </div>
-    <p style="margin-top: 10px">
-      <%= link_to "Show this service", service %>
-    </p>
-  <% end %>
+    
+    <div class="mt-md ml-bt">  
+      <%= link_to "Show more", service_path(service.id), class: 'button button-main' %>
+    </div>
 
-  <div class="field mt">
+  <% end %>
+  
+  <br>
+  <div class="field mt-ls">
     <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
   </div>
 </div>

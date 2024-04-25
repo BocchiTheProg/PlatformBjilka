@@ -2,7 +2,7 @@
   <h2 class="title-lg mb">Sign up</h2>
   
   <% resource.build_client_profile if resource.client_profile.nil? %>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { controller: "form-refresh" }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
   
     <div class="form-wrapper">
@@ -21,6 +21,38 @@
         <%= ui.label :phone %><br />
         <%= ui.text_field :phone, class: 'form-text-field', pattern: "[0-9]{10}", title: "Please enter 10 digits", onkeypress: "return /[0-9]/i.test(event.key)", maxlength: "10" %>
       </div>
+
+      <%= ui.fields_for :address, resource.client_profile.build_address do |address_fields| %>
+        <%= turbo_frame_tag :cs_select do  %>
+          <div data-controller="form-element">
+            <%= address_fields.button "Validate", formaction: new_address_path, formmethod: :get, data: { form_element_target: "remoteBtn", turbo_frame: :cs_select } %>
+            <div class="field mt">
+              <%= address_fields.label :country, style: "display: block" %>
+              <%= address_fields.select :country, resource.client_profile.address.countries.invert, {include_blank: true}, {data: {action: "change->form-element#autosubmit" }, class: 'form-text-field', style: 'width: 300px;' } %>
+            </div>
+
+            <div class="field mt">
+              <%= address_fields.label :state, style: "display: block" %>
+              <%= address_fields.select :state, resource.client_profile.address.states.invert, {include_blank: true}, {data: {action: "change->form-element#autosubmit" }, class: 'form-text-field', style: 'width: 300px;' } %>
+            </div>
+          </div>
+
+          <div class="field mt">
+            <%= address_fields.label :city, style: "display: block" %>
+            <%= address_fields.select :city, resource.client_profile.address.cities, { include_blank: true }, { class: 'form-text-field', style: 'width: 300px;' } %>
+          </div>
+        <% end %>
+
+          <div class="field mt">
+            <%= address_fields.label :build, style: "display: block" %>
+            <%= address_fields.text_field :build, class: 'form-text-field' %>
+          </div>
+
+          <div class="field mt">
+            <%= address_fields.label :flat, style: "display: block" %>
+            <%= address_fields.text_field :flat, class: 'form-text-field' %>
+          </div>
+      <% end %>
     <% end %>
 
     <div class="field mt">

@@ -1,12 +1,13 @@
 <div id="<%= dom_id client_like %>">
-  <p>
-    <strong>Client profile:</strong>
-    <%= client_like.client_profile_id %>
-  </p>
 
+  <% service = Service.find_by(id: client_like.service_id) %>
   <p>
     <strong>Service:</strong>
-    <%= client_like.service_id %>
+    <%= service.title %>
   </p>
 
+  <p>
+    <strong>Service type:</strong>
+    <%= service.service_type %>
+  </p>
 </div>

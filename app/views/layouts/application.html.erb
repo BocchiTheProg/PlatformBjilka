@@ -19,10 +19,18 @@
           <%= inline_svg_tag "logo.svg", class: 'platform-logo' %>
        </div>
 
+      <div class="title-sm" style="margin-left: -50px;">
+        <%= link_to exchange_path, class: 'exchange-link' do %>
+          <%= inline_svg_tag "coin.svg", class: 'exchange-logo' %>
+        <% end %>
+      </div>
+
+      <div class="title-sm" style="margin-left: -900px;">
        <form action="/search" method="get">
          <input name="q" type="text" placeholder="Search..." aria-label="Search", class='form-text-field' value="<%= params[:q] %>">
          <button class="button button-yellow" type="submit">Search</button>
        </form>
+      </div> 
 
        <% if client_signed_in? %>
        <% user = current_client %>

@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="dropdown">
+  <button class="dropbtn">Done orders</button>
+  <div class="dropdown-content">
+      <%= link_to 'Not approved orders', not_approved_orders_path(employee_profile_id: current_employee.id) %>
+      <%= link_to 'Approved orders', approved_orders_path(employee_profile_id: current_employee.id) %>
+      <%= link_to 'Orders in progress', in_progress_orders_path(employee_profile_id: current_employee.id) %>
+      <%= link_to 'Done orders', done_orders_path(employee_profile_id: current_employee.id) %>
+  </div>
+  </div>
+  <br><br>
+  <% if alert.present? %>
+    <p class="mt-ls mb-ls" style="color: red"><%= alert %></p>
+  <% end %>
+
+  <div id="orders">
+    <% @orders.each do |order| %>
+      <div class="user-card mt-ls">
+        <%= render order %>
+      </div>
+
+      <p class="mt">
+        <%= link_to "Show this order", order_path(order.id), class: 'button button-main' %>
+      </p>
+      <br/>
+    <% end %>
+  </div>
+
+  <div class="mt-ls">
+    <%= link_to "Back to profile", employee_profile_path(current_employee), class: 'button button-yellow' %>
+    <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
+  </div>
+
+</div>

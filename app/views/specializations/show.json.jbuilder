@@ -1,1 +1,1 @@
-json.partial! 'specializations/specialization', specialization: @specialization
+json.partial! "specializations/specialization", specialization: @specialization

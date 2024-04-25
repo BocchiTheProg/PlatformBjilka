@@ -1,9 +1,13 @@
-<h1>New address</h1>
-
-<%= render "form", address: @address %>
-
-<br>
-
-<div>
-  <%= link_to "Back to addresses", addresses_path %>
+<div class="container">
+  <h2 class="title-lg mb">New address</h2>
+  
+  <%= render "form", address: @address %>
+  <br>
+  <div>
+    <%= link_to "Back to addresses", addresses_path %>
+  </div>
+  
+  <div>
+    <%= link_to "Back to main page", root_path, class: 'button button-yellow'%>
+  </div>
 </div>

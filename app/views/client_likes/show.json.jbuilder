@@ -1,1 +1,1 @@
-json.partial! 'client_likes/client_like', client_like: @client_like
+json.partial! "client_likes/client_like", client_like: @client_like

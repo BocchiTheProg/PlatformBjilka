@@ -5,17 +5,26 @@
 <div id="orders">
   <% @orders.each do |order| %>
     <div class="user-card mt-ls">
-    <%= render order %>
+      <%= render order %>
     </div>
 
     <p class="mt">
-      <%= link_to "Show this order", order, class: 'button button-main' %>
+      <% if employee_signed_in? %>
+        <% if Status.find_by(id: order.status_id).title == "Not Approved" %>
+        <%= link_to "Approve", change_order_status_path(order_id: order.id), class: 'button button-main' %>
+        <% elsif Status.find_by(id: order.status_id).title == "Approved" %>
+          <%= link_to "In Progress", change_order_status_path(order_id: order.id), class: 'button button-main' %> 
+        <% elsif Status.find_by(id: order.status_id).title == "In Progress" %>
+          <%= link_to "Done", change_order_status_path(order_id: order.id), class: 'button button-yellow' %> 
+        <% end %>
+      <% end %>
+      <%= link_to "Show this order", order_path(order.id), class: 'button button-main' %>
     </p>
     <br/>
   <% end %>
 </div>
 
-  <div class="mt-ls">
+<div class="mt-ls">
     <%= link_to "Back to profile", :back, class: 'button button-yellow' %>
     <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
 </div>

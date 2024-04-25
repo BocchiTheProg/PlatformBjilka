@@ -4,6 +4,11 @@ class IndexController < ApplicationController
   def home
     @services = Service.all
     @services_by_type = group_services_by_type(@services)
+    # @exchange_rates = get_exchange_rates
+  end
+
+  def exchange
+    @exchange_rates = get_exchange_rates
   end
 
   private
@@ -16,4 +21,19 @@ class IndexController < ApplicationController
     end
     services_by_type
   end
+
+  def get_exchange_rates
+    uri = URI('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
+    response = Net::HTTP.get(uri)
+    JSON.parse(response)
+  end
+
+  # def get_exchange_rates
+  #   source = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5'
+  #   resp = Net::HTTP.get_response(URI.parse(source))
+  #   data = resp.body
+  #   result = JSON.parse(data)
+  #   return result
+  # end
+
 end

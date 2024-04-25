@@ -84,6 +84,17 @@ end
 gem 'devise', '~> 4.9'
 
 # gem "gem", "~> 0.0.1.alpha"
+
 gem 'simple_calendar', '~> 3.0'
 
+gem "sassc-rails"
+
 gem 'lefthook', '~> 1.6.7'
+
+gem 'letter_opener', group: :development
+
+gem 'activeadmin'
+
+gem 'net-http'
+
+gem "city-state", "~> 1.1"

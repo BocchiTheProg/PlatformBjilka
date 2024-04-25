@@ -1,11 +1,21 @@
 <div class="container">
+  <% if notice.present? %>
+    <p class="mb-ls" style="color: green"><%= notice %></p>
+  <% end %>
+
+  <% if alert.present? %>
+    <p class="mb-ls" style="color: red"><%= alert %></p>
+  <% end %>
+
   <h2 class="title-lg mb">Service</h2>
-  <p style="color: green"><%= notice %></p>
 
   <%= render @service %>
 
-  <div class="field mt">
-  <%= link_to "Add to favourites", add_to_favorites_service_path(@service), method: :post, class: 'button button-yellow'  %>
-    <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
-  </div>
+  
+    <div class="field mt">
+      <% if client_signed_in? %>
+        <%= link_to "Add to favourites", add_to_favorites_service_path(service_id: @service.id, client_profile_id: current_client.id), method: :post, class: 'button button-yellow'  %>
+      <% end %>
+      <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
+    </div>
 </div>

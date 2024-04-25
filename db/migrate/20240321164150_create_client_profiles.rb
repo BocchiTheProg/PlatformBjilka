@@ -5,6 +5,7 @@ class CreateClientProfiles < ActiveRecord::Migration[7.1]
       t.string :last_name
       t.string :phone
       t.references :client, null: false, foreign_key: true
+      t.references :address, null: true, foreign_key: true
 
       t.timestamps
     end

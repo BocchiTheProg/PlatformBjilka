@@ -20,6 +20,8 @@
     *= require profile
     *
     *= require alert
+    *
+    *= require droplist
 */
 
 .simple-calendar {

@@ -7,7 +7,9 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1 or /comments/1.json
-  def show; end
+  def show
+
+  end
 
   # GET /comments/new
   def new
@@ -15,15 +17,24 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1/edit
-  def edit; end
+  def edit 
+  
+  end
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    # @comment = Comment.new(comment_params)
+    # @order = Order.find(params[:order_id])
+    # @comment = @order.comments.create(comment_params2)
+
+    @order = Order.find(params[:order_id])
+    @comment = @order.comments.new(comment_params)
+    @comment.created_at = DateTime.current 
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to comment_url(@comment), notice: 'Comment was successfully created.' }
+        #format.html { redirect_to comment_url(@comment), notice: 'Comment was successfully created.' }
+        format.html { redirect_to order_url(@comment.order_id), notice: 'Comment was successfully created' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -50,7 +61,7 @@ class CommentsController < ApplicationController
     @comment.destroy!
 
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to order_url(@comment.order_id), notice: 'Comment was successfully destroyed' }
       format.json { head :no_content }
     end
   end
@@ -64,6 +75,6 @@ class CommentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def comment_params
-    params.require(:comment).permit(:content, :created_at)
+    params.require(:comment).permit(:content, :order_id, :created_at)
   end
 end

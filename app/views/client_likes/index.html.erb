@@ -1,14 +1,37 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Client likes</h1>
-
-<div id="client_likes">
-  <% @client_likes.each do |client_like| %>
-    <%= render client_like %>
-    <p>
-      <%= link_to "Show this client like", client_like %>
-    </p>
+<div class="container">
+  <% if notice.present? %>
+    <p class="mb-ls" style="color: green"><%= notice %></p>
   <% end %>
-</div>
 
-<%= link_to "New client like", new_client_like_path %>
+  <% if alert.present? %>
+    <p class="mb-ls" style="color: red"><%= alert %></p>
+  <% end %>
+
+  <h2 class="title-lg mb">My favourites</h2>
+
+  
+  <% if @client_likes.any? { |client_like| client_like.client_profile_id == current_client.id } %>
+    <% @client_likes.each do |client_like| %>
+      <% if client_like.client_profile_id == current_client.id %>
+        <br>
+        <div class="user-card mt-ls">
+          <%= render client_like %>
+        </div>
+        
+        <div class="mt-md ml-bt">  
+          <%= link_to "Show more", service_path(client_like.service_id), class: 'button button-main' %>
+          <%= button_to "Delete", client_like, method: :delete, data: { confirm: "Are you sure you want to delete this client_like?" }, class: 'button button-main' %>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p style="color: red; font-weight: bold;">You haven't selected any services as favorites yet</p>
+  <% end %>  
+
+
+  
+    <div class="field mt-ls">
+      <%= link_to "Back to profile", client_profile_path(current_client), class: 'button button-yellow' %>
+      <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
+    </div>
+</div>

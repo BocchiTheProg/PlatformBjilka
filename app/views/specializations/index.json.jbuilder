@@ -1,1 +1,1 @@
-json.array! @specializations, partial: 'specializations/specialization', as: :specialization
+json.array! @specializations, partial: "specializations/specialization", as: :specialization

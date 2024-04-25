@@ -46,6 +46,7 @@
 
   <%= form.hidden_field :client_profile_id, value: current_client.client_profile.id %>
   <%= form.hidden_field :employee_profile_id, value:params[:employee_id] %>
+  <%= form.hidden_field :status_id, value: Status.find_by(title: "Not Approved").id %>
 
   <div class="field mt">
     <%= form.submit "Save", class: 'button button-main' %>

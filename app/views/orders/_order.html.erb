@@ -1,11 +1,7 @@
 <div id="<%= dom_id order %>">
   <p>
     <strong>Status:</strong>
-    <% if order.status.nil? %>
-      Not approved
-    <% else %>
-      <%= Status.find_by(id: order.status_id).title %>
-    <% end %>
+    <%= Status.find_by(id: order.status_id).title %>
   </p>
 
   <p>
