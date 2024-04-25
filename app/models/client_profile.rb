@@ -2,7 +2,7 @@ class ClientProfile < ApplicationRecord
   belongs_to :client, dependent: :destroy
   accepts_nested_attributes_for :client
  
-  belongs_to :address, dependent: :destroy
+  has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
   has_many :orders, dependent: :destroy

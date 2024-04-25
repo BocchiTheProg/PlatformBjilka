@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-    has_one :client_profile
+    belongs_to :client_profile
     accepts_nested_attributes_for :client_profile
 
     validates :country, presence: true
