@@ -59,8 +59,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_25_121546) do
     t.string "city"
     t.string "build"
     t.string "flat"
+    t.integer "client_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["client_profile_id"], name: "index_addresses_on_client_profile_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -90,10 +92,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_25_121546) do
     t.string "last_name"
     t.string "phone"
     t.integer "client_id", null: false
-    t.integer "address_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_client_profiles_on_address_id"
     t.index ["client_id"], name: "index_client_profiles_on_client_id"
   end
 
@@ -203,9 +203,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_25_121546) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "client_profiles"
   add_foreign_key "client_likes", "client_profiles"
   add_foreign_key "client_likes", "services"
-  add_foreign_key "client_profiles", "addresses"
   add_foreign_key "client_profiles", "clients"
   add_foreign_key "comments", "orders"
   add_foreign_key "employee_profiles", "employees"

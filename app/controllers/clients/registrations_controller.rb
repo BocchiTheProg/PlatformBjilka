@@ -6,7 +6,6 @@ class Clients::RegistrationsController < Devise::RegistrationsController
   def new
     build_resource({})
     resource.build_client_profile
-    resource.client_profile.build_address
     respond_with resource
   end
 
