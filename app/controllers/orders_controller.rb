@@ -1,27 +1,26 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_order, only: %i[show edit update destroy]
 
   # GET /orders or /orders.json
   def index
-    if params[:client_profile_id].present?
-      @orders = Order.where(client_profile_id: params[:client_profile_id])
-    elsif params[:employee_profile_id].present?
-      @orders = Order.where(employee_profile_id: params[:employee_profile_id])
-    else
-      @orders = Order.all
-    end
+    @orders = if params[:client_profile_id].present?
+                Order.where(client_profile_id: params[:client_profile_id])
+              elsif params[:employee_profile_id].present?
+                Order.where(employee_profile_id: params[:employee_profile_id])
+              else
+                Order.all
+              end
   end
 
   # GET /orders/1 or /orders/1.json
   def show
-
   end
 
   # GET /orders/new
   def new
-      @order = Order.new
+    @order = Order.new
   end
-  
+
   # GET /orders/1/edit
   def edit
     # if employee_signed_in?
@@ -48,8 +47,6 @@ class OrdersController < ApplicationController
       end
     end
   end
-  
-
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
@@ -77,21 +74,21 @@ class OrdersController < ApplicationController
   def not_approved_orders
     @orders = Order.where(status_id: Status.find_by(title: "Not Approved").id).order(date_order: :asc)
   end
-  
+
   def approved_orders
     @orders = Order.where(status_id: Status.find_by(title: "Approved").id).order(date_order: :asc)
   end
-  
+
   def in_progress_orders
     @orders = Order.where(status_id: Status.find_by(title: "In Progress").id).order(date_order: :asc)
   end
-  
+
   def done_orders
     @orders = Order.where(status_id: Status.find_by(title: "Done").id).order(date_order: :asc)
   end
 
   def change_order_status
-      @order = Order.find_by(id: params[:order_id])
+    @order = Order.find_by(id: params[:order_id])
       case @order.status.title
       when "Not Approved"
         @order.update(status: Status.find_by(title: "Approved"))
@@ -104,24 +101,24 @@ class OrdersController < ApplicationController
         redirect_to done_orders_path
       else
         redirect_to done_orders_path
-      end      
+      end
   end
 
   private
-    def set_order
-      @order = Order.find(params[:id])
-    end
 
-    def order_params
-      #params.require(:order).permit(:status_id, :client_profile_id, :employee_profile_id, :comment_id, :urgency_id, :date_order, :service_id, :price)
-      #params.require(:order).permit(:status_id, :client_profile_id, :employee_profile_id, :urgency_id, :date_order, :service_id, :price, comment_attributes: [:id, :content])
-      params.require(:order).permit(:status_id, :client_profile_id, :employee_profile_id, :urgency_id, :date_order, :service_id, :price)
-    end
-    # def order_params
-    #   permitted_params = [:status_id, :client_profile_id, :employee_profile_id, :urgency_id, :date_order, :service_id, :price]
-    #   permitted_params << { comment_attributes: [:id, :content] } if params[:order][:comment_attributes].present?
-    #   params.require(:order).permit(permitted_params)
-    #   debugger
-    # end
-    
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  def order_params
+    # params.require(:order).permit(:status_id, :client_profile_id, :employee_profile_id, :comment_id, :urgency_id, :date_order, :service_id, :price)
+    # params.require(:order).permit(:status_id, :client_profile_id, :employee_profile_id, :urgency_id, :date_order, :service_id, :price, comment_attributes: [:id, :content])
+    params.require(:order).permit(:status_id, :client_profile_id, :employee_profile_id, :urgency_id, :date_order, :service_id, :price)
+  end
+  # def order_params
+  #   permitted_params = [:status_id, :client_profile_id, :employee_profile_id, :urgency_id, :date_order, :service_id, :price]
+  #   permitted_params << { comment_attributes: [:id, :content] } if params[:order][:comment_attributes].present?
+  #   params.require(:order).permit(permitted_params)
+  #   debugger
+  # end
 end

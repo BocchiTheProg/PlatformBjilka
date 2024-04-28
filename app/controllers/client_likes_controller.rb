@@ -1,5 +1,5 @@
 class ClientLikesController < ApplicationController
-  before_action :set_client_like, only: %i[ show edit update destroy ]
+  before_action :set_client_like, only: %i[show edit update destroy]
 
   # GET /client_likes or /client_likes.json
   def index
@@ -59,13 +59,14 @@ class ClientLikesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_client_like
-      @client_like = ClientLike.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def client_like_params
-      params.require(:client_like).permit(:client_profile_id, :service_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_client_like
+    @client_like = ClientLike.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def client_like_params
+    params.require(:client_like).permit(:client_profile_id, :service_id)
+  end
 end

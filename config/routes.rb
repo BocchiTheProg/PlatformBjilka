@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   get '/select_registration', to: 'index#select_type', as: :select_registration
-  
+
   get '/exchange', to: 'index#exchange', as: :exchange
 
   get '/not_approved_orders', to: 'orders#not_approved_orders', as: :not_approved_orders

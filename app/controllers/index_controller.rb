@@ -35,5 +35,4 @@ class IndexController < ApplicationController
   #   result = JSON.parse(data)
   #   return result
   # end
-
 end

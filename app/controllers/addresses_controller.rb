@@ -66,5 +66,4 @@ class AddressesController < ApplicationController
   def address_params
     params.fetch(:address, {}).permit(:country, :state, :city, :build, :flat)
   end
-
 end

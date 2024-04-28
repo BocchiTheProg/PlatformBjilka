@@ -18,5 +18,8 @@ Rails/RedundantPresenceValidationOnBelongsTo:
 Rails/UniqBeforePluck:
   Enabled: false
 
+Rails/Present:
+  Enabled: false
+
 Rails/UniqueValidationWithoutIndex:
   Enabled: false

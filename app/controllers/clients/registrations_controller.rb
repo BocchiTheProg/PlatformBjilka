@@ -21,7 +21,6 @@ class Clients::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-
   def update_resource(resource, params)
     if params[:password].blank? && params[:password_confirmation].blank?
       resource.update_without_password(params.except(:current_password))

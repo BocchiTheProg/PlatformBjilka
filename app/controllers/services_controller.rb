@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: %i[ show edit update destroy ]
+  before_action :set_service, only: %i[show edit update destroy]
 
   # GET /services or /services.json
   def index
@@ -26,19 +26,18 @@ class ServicesController < ApplicationController
   end
 
   def search
-    if params[:q].present?
-      @services = Service.where("title LIKE ?", "%" + params[:q] + "%")
-    else
-      @services = []
-    end
+    @services = if params[:q].present?
+                  Service.where("title LIKE ?", "%" + params[:q] + "%")
+                else
+                  []
+                end
   end
 
   def by_type
     service_type = params[:service_type]
-    @services = Service.where(service_type: service_type).pluck(:id, :title)
+    @services = Service.where(service_type:).pluck(:id, :title)
     render json: @services
   end
-
 
   # POST /services or /services.json
   def create
@@ -54,7 +53,7 @@ class ServicesController < ApplicationController
       end
     end
   end
-  
+
   # PATCH/PUT /services/1 or /services/1.json
   def update
     respond_to do |format|
@@ -79,13 +78,14 @@ class ServicesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_service
-      @service = Service.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def service_params
-        params.require(:service).permit(:title, :service_type, :difficulty_id, :employee_profile_id)
-    end    
+  # Use callbacks to share common setup or constraints between actions.
+  def set_service
+    @service = Service.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def service_params
+    params.require(:service).permit(:title, :service_type, :difficulty_id, :employee_profile_id)
+  end
 end
