@@ -19,10 +19,10 @@
         </div>
 
         <div class="mt-ls">
-          <%= link_to "Edit this client profile", edit_client_profile_path, class: 'button button-yellow' %>
-          <%= link_to "Show my orders", orders_path(client_profile_id: @client_profile.id), class: 'button button-yellow'%>
-          <%= link_to "Show my favourites", client_likes_path(@client_likes), class: 'button button-yellow'%>    
-          <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
+          <%= link_to t('edit-profile-cli'), edit_client_profile_path, class: 'button button-yellow' %>
+          <%= link_to t('show-my-orders'), orders_path(client_profile_id: @client_profile.id), class: 'button button-yellow'%>
+          <%= link_to t("show-fav"), client_likes_path(@client_likes), class: 'button button-yellow'%>
+          <%= link_to t('back-main-page'), root_path, class: 'button button-yellow' %>
         </div>    
     </div>
       

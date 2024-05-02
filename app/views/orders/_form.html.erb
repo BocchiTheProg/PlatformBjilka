@@ -15,32 +15,32 @@
   <% if params[:employee_id].present? %>
     <% employee = EmployeeProfile.find(params[:employee_id]) %>
     <div class="field mt">
-      <%= form.label :employee_profile_id, style: "display: block" %>
+      <%= form.label t("emp-profile.one"), style: "display: block" %>
       <%= form.text_field :employee_profile_id, value: "#{employee.first_name} #{employee.last_name}", class: 'form-text-field', readonly: true %>
     </div>
   <% end %>
 
   <div class="field mt">
-    <%= link_to 'Select Employee', employee_profiles_path, class: 'button button-yellow mr-sm' %>
+    <%= link_to t("select-emp"), employee_profiles_path, class: 'button button-yellow mr-sm' %>
   </div>
 
   <div class="field mt">
-    <%= form.label :urgency_id, style: "display: block" %>
+    <%= form.label t("urgency"), style: "display: block" %>
     <%= form.select :urgency_id, options_for_select(Urgency.all.map { |d| [d.title, d.id] }, prompt: 'Select urgency'), {}, class: 'form-text-field', style: "width: 300px;" %>
   </div>
 
   <div class="field mt">
-    <%= form.label :date_order, style: "display: block" %>
+    <%= form.label t("date-order"), style: "display: block" %>
     <%= form.date_field :date_order, class: 'form-text-field' %>
   </div>
 
   <div class="field mt">
-    <%= form.label :service_id, style: "display: block" %>
+    <%= form.label t("service"), style: "display: block" %>
     <%= form.select :service_id, options_for_select(Service.all.map { |d| [d.title, d.id] }, prompt: 'Select service'), {}, class: 'form-text-field', style: "width: 300px;" %>
   </div>
 
   <div class="field mt">
-    <%= form.label :price, style: "display: block" %>
+    <%= form.label t("price"), style: "display: block" %>
     <%= form.number_field :price, class: 'form-text-field', min: 1, max: 1000000 %>
   </div>
 
@@ -49,7 +49,7 @@
   <%= form.hidden_field :status_id, value: Status.find_by(title: "Not Approved").id %>
 
   <div class="field mt">
-    <%= form.submit "Save", class: 'button button-main' %>
+    <%= form.submit t("save"), class: 'button button-main' %>
   </div>
 <% end %>
 </div>

@@ -1,39 +1,39 @@
 <div id="<%= dom_id order %>">
   <p>
-    <strong>Status:</strong>
+    <strong><%= t("status")%>:</strong>
     <%= Status.find_by(id: order.status_id).title %>
   </p>
 
   <p>
-    <strong>Client:</strong>
+    <strong><%= t("client")%>:</strong>
     <%= ClientProfile.find_by(id: order.client_profile_id)&.first_name %>
     <%= ClientProfile.find_by(id: order.client_profile_id)&.last_name %>
   </p>
 
   <p>
-    <strong>Employee:</strong>
+    <strong><%= t("employee")%>:</strong>
     <%= EmployeeProfile.find_by(id: order.employee_profile_id)&.first_name %>
     <%= EmployeeProfile.find_by(id: order.employee_profile_id)&.last_name %>
   </p>
 
 
   <p>
-    <strong>Urgency:</strong>
+    <strong><%= t("urgency")%>:</strong>
     <%= Urgency.find_by(id: order.urgency_id).title %>
   </p>
 
   <p>
-    <strong>Date order:</strong>
-    <%= order.date_order.to_date  %>
+    <strong><%= t("date-order")%>:</strong>
+    <%= l(order.date_order.to_date, format: :default)  %>
   </p>
 
   <p>
-    <strong>Service:</strong>
+    <strong><%= t("service")%>:</strong>
     <%= Service.find_by(id: order.service_id).title %>
   </p>
 
   <p>
-    <strong>Price:</strong>
+    <strong><%= t("price")%>:</strong>
     <%= "#{order.price} $" %>
   </p>
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title-lg mb">Editing order</h2>
+  <h2 class="title-lg mb"><%= t("editing-order") %></h2>
   <p style="color: green"><%= notice %></p>
 
   <% if current_client %>
@@ -20,12 +20,12 @@
     
     <div class="form-wrapper">   
       <div class="field mt">
-        <%= form.label :price, style: "display: block" %>
+        <%= form.label t("price"), style: "display: block" %>
         <%= form.number_field :price, class: 'form-text-field', min: 1, max: 1000000 %>
       </div>
 
       <div class="field mt">
-        <%= form.submit "Save", class: 'button button-main' %>
+        <%= form.submit t("save"), class: 'button button-main' %>
       </div>
     <% end %>
 
@@ -36,11 +36,11 @@
   <br>
   
   <div class="mt-ls">
-    <%= link_to "Show this order", order_path(@order.id), class: 'button button-yellow'%>
+    <%= link_to t("show-order"), order_path(@order.id), class: 'button button-yellow'%>
     <% if current_client %>
-      <%= link_to "Back to orders", orders_path, class: 'button button-yellow' %>
+      <%= link_to t("back-to-orders"), orders_path, class: 'button button-yellow' %>
     <% elsif current_employee %>
-      <%= link_to "Back to orders", not_approved_orders_path, class: 'button button-yellow' %>
+      <%= link_to t("back-to-orders"), not_approved_orders_path, class: 'button button-yellow' %>
     <% end %>          
 
   </div>

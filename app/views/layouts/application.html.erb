@@ -27,8 +27,9 @@
 
       <div class="title-sm" style="margin-left: -900px;">
        <form action="/search" method="get">
-         <input name="q" type="text" placeholder="Search..." aria-label="Search", class='form-text-field' value="<%= params[:q] %>">
-         <button class="button button-yellow" type="submit">Search</button>
+         <input name="q" type="text" placeholder="<%= t("search") %>" aria-label="Search", class='form-text-field' value="<%= params[:q] %>">
+          <input name="locale" type="hidden" value="<%= params[:locale]%>">
+         <button class="button button-yellow" type="submit"><%= t("btn-submit") %></button>
        </form>
       </div> 
 
@@ -40,24 +41,31 @@
 
       <div>
       <% if user %>
-        <% profile_path = user.is_a?(Client) ? (user.client_profile.present? ? client_profile_path(user.client_profile) : nil) : (user.employee_profile.present? ? employee_profile_path(user.employee_profile) : nil) %>
+        <% profile_path = user.is_a?(Client) ? (user.client_profile.present? ? client_profile_path(user.client_profile, locale: params[:locale]) : nil) : (user.employee_profile.present? ? employee_profile_path(user.employee_profile, locale: params[:locale]) : nil) %>
         <% email_span = content_tag('span', user.email, class: 'mr-sm') %>
-        <% profile_link = profile_path.present? ? link_to('My Profile', profile_path, class: 'button button-yellow') : nil %>
+        <% profile_link = profile_path.present? ? link_to("#{t('my-profile')}", profile_path, class: 'button button-yellow') : nil %>
         <%= email_span %>
         <% if user.is_a?(Employee) %>
-          <%= link_to 'Create Service', new_service_path(current_employee_id: current_employee.id), class: 'button button-yellow mr-sm' %>
-          <%= link_to 'Calendar', employee_calendar_path(current_employee_id: current_employee.id), class: 'button button-yellow mr-sm' %>
+          <%= link_to "#{t("create-service")}", new_service_path(current_employee_id: current_employee.id), class: 'button button-yellow mr-sm' %>
+          <%= link_to "#{t("calendar")}", employee_calendar_path(current_employee_id: current_employee.id), class: 'button button-yellow mr-sm' %>
         <% end %>
         <% if user.is_a?(Client) %>
-          <%= link_to 'Create Order', new_order_path(current_client_id: current_client.id), class: 'button button-yellow mr-sm' %>
-          <%= link_to 'Calendar', calendar_path(current_client_id: current_client.id), class: 'button button-yellow mr-sm' %>
+          <%= link_to "#{t("create-order")}", new_order_path(current_client_id: current_client.id), class: 'button button-yellow mr-sm' %>
+          <%= link_to "#{t("calendar")}", calendar_path(current_client_id: current_client.id), class: 'button button-yellow mr-sm' %>
         <% end %>
         <%= profile_link %>
-        <%= button_to 'Sign out', user.is_a?(Client) ? destroy_client_session_path : destroy_employee_session_path, method: :delete, class: 'button button-yellow' %>
+        <%= button_to "#{t("sign-out")}", user.is_a?(Client) ? destroy_client_session_path : destroy_employee_session_path, method: :delete, class: 'button button-yellow' %>
       <% else %>
-        <%= link_to 'Sign up', select_registration_path, class: 'button button-yellow mr-sm' %>
-        <%= link_to 'Log in', new_client_session_path, class: 'button button-yellow' %>
+        <%= link_to "#{t("sign-up")}", select_registration_path, class: 'button button-yellow mr-sm' %>
+        <%= link_to "#{t("log-in")}", new_client_session_path, class: 'button button-yellow' %>
       <% end %>
+        <% if params[:locale] == "ua"%>
+          <%= link_to "EN", url_for(request.parameters.merge({:locale => "en"})), class: 'button button-yellow'%>
+          <%#= link_to "EN", url_for(params.permit(:param_1).merge(:locale => "en")), class: 'button button-yellow'%>
+        <% else %>
+          <%#= link_to "UA", url_for(params.permit(:param_1).merge(:locale => "ua")), class: 'button button-yellow'%>
+          <%= link_to "UA", url_for(request.parameters.merge({:locale => "ua"})), class: 'button button-yellow'%>
+        <% end %>
 
       </div>
 

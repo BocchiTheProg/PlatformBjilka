@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field mt">
-    <%= form.label :title, style: "display: block" %>
+    <%= form.label t("title"), style: "display: block" %>
     <%= form.text_field :title, class: 'form-text-field'  %>
   </div>
 
   <div class="field mt">
-    <%= form.label :service_type, style: "display: block" %>
+    <%= form.label t("serv-type"), style: "display: block" %>
     <%= form.text_field :service_type, class: 'form-text-field'  %>
   </div>
 
   <div class="field mt">
-    <%= form.label :difficulty_id, style: "display: block" %>
+    <%= form.label t("difficulty"), style: "display: block" %>
     <%= form.select :difficulty_id, options_for_select(Difficulty.all.map { |d| [d.title, d.id] }, prompt: 'Select difficulty'), {}, class: 'form-text-field', style: 'width: 300px;' %>
   </div>
 
   <%= form.hidden_field :employee_profile_id, value:current_employee.id %>
 
   <div class="field mt">
-    <%= form.submit class: 'button button-main' %>
+    <%= form.submit t("create-service"), class: 'button button-main' %>
   </div>
 <% end %>

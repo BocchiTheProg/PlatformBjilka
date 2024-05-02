@@ -1,22 +1,22 @@
 <div id="<%= dom_id service %>">
   <div class="mt-md">
-    <strong>Title:</strong>
+    <strong><%= t("title") %>:</strong>
     <%= service.title %>
   </div>
 
   <div class="mt-sm mb-sm">
-    <strong>Service type:</strong>
+    <strong><%= t("serv-type")%>:</strong>
     <%= service.service_type %>
   </div>
 
   <% if @service.present? && @service.difficulty.present? %>
   <div class="mt-sm mb-sm">
-    <strong>Difficulty:</strong>
+    <strong><%= t("difficulty")%>:</strong>
     <%= @service.difficulty.title %>
   </div>
 
   <div class="mt-sm mb-sm">
-    <strong>Who created:</strong>
+    <strong><%= t("creator")%>:</strong>
     <% if service.employee_profile_id.present? %>
       <%= EmployeeProfile.find_by(id: service.employee_profile_id).last_name %>
     <% else %>

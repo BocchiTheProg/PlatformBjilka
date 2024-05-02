@@ -2,12 +2,12 @@
 
   <% service = Service.find_by(id: client_like.service_id) %>
   <p>
-    <strong>Service:</strong>
+    <strong><%= t("title") %>:</strong>
     <%= service.title %>
   </p>
 
   <p>
-    <strong>Service type:</strong>
+    <strong><%= t("serv-type") %>:</strong>
     <%= service.service_type %>
   </p>
 </div>

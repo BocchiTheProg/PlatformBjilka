@@ -18,9 +18,9 @@
             <%= render @employee_profile %>
         </div>
             <div class="mt-ls">
-              <%= link_to "Edit this employee profile", edit_employee_registration_path, class: 'button button-yellow' %>
-              <%= link_to "Show my orders", not_approved_orders_path(employee_profile_id: @employee_profile.id), class: 'button button-yellow'%>
-              <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
+              <%= link_to t("edit-profile-emp"), edit_employee_registration_path, class: 'button button-yellow' %>
+              <%= link_to t("show-my-orders"), not_approved_orders_path(employee_profile_id: @employee_profile.id), class: 'button button-yellow'%>
+              <%= link_to t("back-main-page"), root_path, class: 'button button-yellow' %>
             </div>
     </div>
       

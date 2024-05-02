@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title-lg mb">Sign up</h2>
+  <h2 class="title-lg mb"><%= t("sign-up")%></h2>
   
   <% resource.build_client_profile if resource.client_profile.nil? %>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { controller: "form-refresh" }) do |f| %>
@@ -8,17 +8,17 @@
     <div class="form-wrapper">
     <%= f.fields_for :client_profile do |ui| %>
       <div class="field mt">
-        <%= ui.label :first_name %><br />
+        <%= ui.label t("first-name") %><br />
         <%= ui.text_field :first_name, autofocus: true, class: 'form-text-field' %>
       </div>
   
       <div class="field mt">
-        <%= ui.label :last_name %><br />
+        <%= ui.label t("last-name") %><br />
         <%= ui.text_field :last_name, class: 'form-text-field' %>
       </div>
   
       <div class="field mt">
-        <%= ui.label :phone %><br />
+        <%= ui.label t("phone") %><br />
         <%= ui.text_field :phone, class: 'form-text-field', pattern: "[0-9]{10}", title: "Please enter 10 digits", onkeypress: "return /[0-9]/i.test(event.key)", maxlength: "10" %>
       </div>
 
@@ -27,29 +27,29 @@
           <div data-controller="form-element">
             <%= address_fields.button "Validate", formaction: new_address_path, formmethod: :get, data: { form_element_target: "remoteBtn", turbo_frame: :cs_select } %>
             <div class="field mt">
-              <%= address_fields.label :country, style: "display: block" %>
+              <%= address_fields.label t("country"), style: "display: block" %>
               <%= address_fields.select :country, resource.client_profile.address.countries.invert, {include_blank: true}, {data: {action: "change->form-element#autosubmit" }, class: 'form-text-field', style: 'width: 300px;' } %>
             </div>
 
             <div class="field mt">
-              <%= address_fields.label :state, style: "display: block" %>
+              <%= address_fields.label t("state"), style: "display: block" %>
               <%= address_fields.select :state, resource.client_profile.address.states.invert, {include_blank: true}, {data: {action: "change->form-element#autosubmit" }, class: 'form-text-field', style: 'width: 300px;' } %>
             </div>
           </div>
 
           <div class="field mt">
-            <%= address_fields.label :city, style: "display: block" %>
+            <%= address_fields.label t("city"), style: "display: block" %>
             <%= address_fields.select :city, resource.client_profile.address.cities, { include_blank: true }, { class: 'form-text-field', style: 'width: 300px;' } %>
           </div>
         <% end %>
 
           <div class="field mt">
-            <%= address_fields.label :build, style: "display: block" %>
+            <%= address_fields.label t("build"), style: "display: block" %>
             <%= address_fields.text_field :build, class: 'form-text-field' %>
           </div>
 
           <div class="field mt">
-            <%= address_fields.label :flat, style: "display: block" %>
+            <%= address_fields.label t("flat"), style: "display: block" %>
             <%= address_fields.text_field :flat, class: 'form-text-field' %>
           </div>
       <% end %>
@@ -65,19 +65,19 @@
     <% end %>
 
     <div class="field mt">
-      <%= f.label :password do %>
-        Enter password <%= content_tag(:em, "(#{@minimum_password_length} characters minimum") %>)
+      <%= f.label t("ent-password") do %>
+        <%= t("ent-password") %> <%= content_tag(:em, "(#{@minimum_password_length} #{t('password-char')}") %>)
       <% end %>
       <p><%= f.password_field :password, autocomplete: "new-password", class: 'form-text-field' %></p>
     </div>
 
     <div class="field mt">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label t("password-conf") %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-text-field' %>
     </div>
 
     <div class="actions mt">
-      <%= f.submit "Sign up", class: 'button button-main' %>
+      <%= f.submit "#{t("sign-up")}", class: 'button button-main' %>
     </div>
     <%= render "clients/shared/links" %>
     <% end %>

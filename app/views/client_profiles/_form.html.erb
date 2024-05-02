@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="field mt">
-    <%= form.label :first_name, style: "display: block" %>
+    <%= form.label t("first-name"), style: "display: block" %>
     <%= form.text_field :first_name, autofocus: true, class: 'form-text-field' %>
   </div>
 
   <div class="field mt">
-    <%= form.label :last_name, style: "display: block" %>
+    <%= form.label t("last-name"), style: "display: block" %>
     <%= form.text_field :last_name, class: 'form-text-field' %>
   </div>
 
   <div class="field mt">
-    <%= form.label :phone, style: "display: block" %>
+    <%= form.label t("phone"), style: "display: block" %>
     <%= form.text_field :phone, class: 'form-text-field' %>
   </div>
 
@@ -33,17 +33,17 @@
     </div>
 
   <div class="field mt">
-    <%= user_fields.label :password %> <i>(leave blank if you don't<br>want to change it)</i><br />
+    <%= user_fields.label t("ent-password") %> <i>(<%= t("leave-blank") %><br><%= t("change-it") %>)</i><br />
     <%= user_fields.password_field :password, autocomplete: "new-password", class: 'form-text-field'   %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> <%= t("password-char") %>></em>
     <% end %>
   </div>
   <% end %>
 
   <div class="field mt">
-    <%= form.submit "Save", class: 'button button-main' %>
+    <%= form.submit t("save"), class: 'button button-main' %>
   </div>
 
 <% end %>

@@ -7,7 +7,7 @@
     <p class="mb-ls" style="color: red"><%= alert %></p>
   <% end %>
 
-  <h2 class="title-lg mb">My favourites</h2>
+  <h2 class="title-lg mb"><%= t("my-fav")%></h2>
 
   
   <% if @client_likes.any? { |client_like| client_like.client_profile_id == current_client.id } %>
@@ -19,19 +19,19 @@
         </div>
         
         <div class="mt-md ml-bt">  
-          <%= link_to "Show more", service_path(client_like.service_id), class: 'button button-main' %>
-          <%= button_to "Delete", client_like, method: :delete, data: { confirm: "Are you sure you want to delete this client_like?" }, class: 'button button-main' %>
+          <%= link_to t("show-more"), service_path(client_like.service_id), class: 'button button-main' %>
+          <%= button_to t("delete"), client_like, method: :delete, data: { confirm: "Are you sure you want to delete this client_like?" }, class: 'button button-main' %>
         </div>
       <% end %>
     <% end %>
   <% else %>
-    <p style="color: red; font-weight: bold;">You haven't selected any services as favorites yet</p>
+    <p style="color: red; font-weight: bold;"><%= t("no-favorite") %></p>
   <% end %>  
 
 
   
     <div class="field mt-ls">
-      <%= link_to "Back to profile", client_profile_path(current_client), class: 'button button-yellow' %>
-      <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
+      <%= link_to t("back-to-profile"), client_profile_path(current_client), class: 'button button-yellow' %>
+      <%= link_to t("back-main-page"), root_path, class: 'button button-yellow' %>
     </div>
 </div>

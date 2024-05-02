@@ -1,0 +1,150 @@
+ua:
+  hello: "Привіт світ"
+
+  # Navbar
+  search: "Пошук..."
+  btn-submit: "Підтвердити"
+  my-profile: "Мій профіль"
+  create-service: "Створити Послугу"
+  calendar: "Календар"
+  create-order: "Створити Замовлення"
+  sign-out: "Вийти"
+  sign-up: "Зареєструватись"
+  log-in: "Увійти"
+
+  # Registration
+  choose-option: "Оберіть варіант:"
+  sign-up-cli: "Реєстрація клієнта"
+  sign-up-emp: "Реєстрація робітника"
+
+  # forms
+  first-name: "Ім'я"
+  last-name: "Фамілія"
+  phone: "Номер телефону"
+  country: "Країна"
+  state: "Регіон"
+  city: "Населений пункт"
+  build: "Будівля"
+  flat: "Квартира"
+  Email: "Email"
+  ent-password: "Введіть пароль"
+  password-char: "символів мінімум"
+  password-conf: "Підтвердження паролю"
+  spec: "Спеціалізація"
+  remember-me: "Запам'ятати мене"
+  forget-password: "Забув пароль?"
+
+  all-services: "Всі Послуги"
+  services: "Знайдені послуги"
+  service: "Послуга"
+
+  # Footer
+  about-us: "Про нас"
+  bee-proj: "Про проєкт Бджілка"
+  contact: "Контакти"
+
+  how-it-works: "Як це працює"
+  how-to-order: "Як забронювати послугу"
+  how-to-reg: "Як зареєструвати акаунт"
+  warranty-safety: "Гарантії та безпека"
+  latest-rev: "Останні ревізії"
+  top-perf: "Найкращі виконавці"
+
+  help: "Допомога"
+  QA: "Питання та відповіді"
+  PP: "Приватна політика"
+  PO: "Публічні пропозиції"
+  support-service: "Підтримати нас"
+
+  follow-us: "Слідкуйте за нами"
+
+  show-more: "Показати більше"
+  delete: "Видалити"
+  save: "Зберегти"
+  select: "Обрати"
+  update: "Оновити"
+  add-fav: "Додати до улюблених"
+  edit-profile-cli: "Редагувати профіль"
+  show-my-orders: "Мої замовлення"
+  show-fav: "Мої улюблені послуги"
+  back-main-page: "Повернутись на головну"
+  back-to-profile: "Повернутись до профілю"
+  back-to-calendar: "Повернутись до календаря"
+  back-to-orders: "Повернутись до замовлень"
+
+  # Service
+  title: "Назва"
+  serv-type: "Тип послуги"
+  difficulty: "Складність"
+  creator: "Створив послугу"
+
+  # Favorites
+  my-fav: "Мої улюблені"
+
+  no-favorite: "Ви ще не обрали улюблені послуги"
+
+  # Edit Profile
+  edit-prof: "Редагування профілю"
+  curr-pass: "Поточний пароль"
+  leave-blank: "залиште поле пустим, "
+  change-it: "якщо ви не хочете його змінювати"
+  need-current: "нам потрібен поточний"
+  password-confirm: "пароль для підтвердження змін"
+  cancel-acc: "Скасувати мій акаунт"
+  unhappy: "Незадоволені"
+
+  # Order
+  new-order: "Нове замовлення"
+  order:
+    one: "Замовлення"
+    many: "Замовлення"
+  status: "Стан"
+  client: "Замовник"
+  employee: "Виконавець"
+  select-emp: "Обрати виконавця"
+  urgency: "Терміновість"
+  date-order: "Дата виконання"
+  price: "Ціна"
+  edit-order: "Редагувати замовлення"
+  show-order: "Показати замовлення"
+
+  editing-order: "Редагування замовлення"
+
+  not-approved: "Не підтвердженні замовлення"
+  approved: "Підтвердженні замовлення"
+  in-progress: "Замовлення що виконуються"
+  done: "Виконані замовлення"
+
+  to-approve: "Затвердити"
+  to-progress: "В процесі виконання"
+  to-done: "Виконано"
+
+  # Comment
+  comment:
+    one: "Коментар"
+    many: "Коментарі"
+  save-comm: "Зберегти Коментар"
+  from: "Від"
+  date-comm: "Дата"
+
+  # New Service
+  new-serv: "Нова Послуга"
+  create-serv: "Створити Послугу"
+
+  # Employee profiles
+  emp-profile:
+    one: "Профіль виконавця"
+    many: "Профілі виконавців"
+  date-reg: "Дата реєстрації"
+  edit-profile-emp: "Редагувати профіль"
+
+  # Exchange
+  exchange-rates: "Обмін валют"
+  to-UAH: "в грн"
+  buy: "Купівля"
+  sale: "Продаж"
+
+  date:
+    formats:
+      default: "%d-%m-%Y"
+

@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title-lg mb">Order</h2>
+  <h2 class="title-lg mb"><%= t("order.one") %></h2>
   <p style="color: green"><%= notice %></p>
   
   <div class="user-card mt-ls">
@@ -9,25 +9,25 @@
   <div class="mt-ls">
     
     <% if current_employee && Status.find_by(id: @order.status_id).title != "Done" %>
-      <%= link_to "Edit this order", edit_order_path(@order.id), class: 'button button-yellow' %>
+      <%= link_to t("edit-order"), edit_order_path(@order.id), class: 'button button-yellow' %>
     <% end %>
 
     <% if current_client && Status.find_by(id: @order.status_id).title == "Done" %>
       <%= form_for(@comment = Comment.new) do |f| %>
         <div class="form-wrapper">
           <div class="field mt">
-            <%= f.label :content, "Comment", style: "display: block" %>
+            <%= f.label :content, t("comment.one"), style: "display: block" %>
             <%= f.text_area :content, class: 'form-text-area' %>
           </div>
           <%= hidden_field_tag :order_id, @order.id %>
           <div class="field mt">
-            <%= f.submit "Save Comment", class: 'button button-main' %>
+            <%= f.submit t("save-comm"), class: 'button button-main' %>
           </div>
         </div>
       <% end %>
       <br><br>
 
-      <h2 class="title-lg mb" style="text-align: center;">Comments</h2>
+      <h2 class="title-lg mb" style="text-align: center;"><%= t("comment.many") %></h2>
       <% comments = @order.comments.where(order_id: @order.id).order(created_at: :desc) %>
       <% if comments.any? %>
         <% comments.each do |comment| %>
@@ -37,8 +37,8 @@
               <%= button_to "", comment, method: :delete, class: 'delete-link fa fa-trash' %>
             </span>
             <p class="comment-meta">
-              <strong>From:</strong> <%= "#{Order.find_by(id: comment.order_id).client_profile.first_name} #{Order.find_by(id: comment.order_id).client_profile.last_name}" %> <br>
-              <strong>Date:</strong> <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+              <strong><%= t("from") %>:</strong> <%= "#{Order.find_by(id: comment.order_id).client_profile.first_name} #{Order.find_by(id: comment.order_id).client_profile.last_name}" %> <br>
+              <strong><%= t("date-comm") %>:</strong> <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
             </p>
             <p class="comment-content">
               <%= comment.content %>
@@ -55,13 +55,13 @@
 
     <% if current_client %>
       <div class="mt-ls" style="text-align: center;">
-        <%= link_to "Edit this order", edit_order_path(@order.id), class: 'button button-yellow' %>
-        <%= link_to "Orders", orders_path, class: 'button button-yellow' %>
-        <%= link_to "Back to calendar", calendar_path(current_client_id: current_client.id, start_date: params[:start_date]), class: 'button button-yellow' %>
+        <%= link_to t("edit-order"), edit_order_path(@order.id), class: 'button button-yellow' %>
+        <%= link_to t("order.many"), orders_path, class: 'button button-yellow' %>
+        <%= link_to t("back-to-calendar"), calendar_path(current_client_id: current_client.id, start_date: params[:start_date]), class: 'button button-yellow' %>
       </div>
     <% elsif current_employee %>
-      <%= link_to "Orders", not_approved_orders_path, class: 'button button-yellow' %>
-      <%= link_to "Back to calendar", employee_calendar_path(current_employee_id: current_employee.id, start_date: params[:start_date]), class: 'button button-yellow' %>
+      <%= link_to t("order.many"), not_approved_orders_path, class: 'button button-yellow' %>
+      <%= link_to t("back-to-calendar"), employee_calendar_path(current_employee_id: current_employee.id, start_date: params[:start_date]), class: 'button button-yellow' %>
     <% end %>  
   </div>
 </div>

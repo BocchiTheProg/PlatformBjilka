@@ -29,3 +29,152 @@
 
 en:
   hello: "Hello world"
+
+  # Navbar
+  search: "Search..."
+  btn-submit: "Submit"
+  my-profile: "My profile"
+  create-service: "Create Service"
+  calendar: "Calendar"
+  create-order: "Create Order"
+  sign-out: "Sign out"
+  sign-up: "Sign up"
+  log-in: "Log in"
+
+  # Registration
+  choose-option: "Choose the option:"
+  sign-up-cli: "Sign up as client"
+  sign-up-emp: "Sign up as employee"
+
+  # forms
+  first-name: "First name"
+  last-name: "Last name"
+  phone: "Phone"
+  country: "Country"
+  state: "State"
+  city: "City"
+  build: "Build"
+  flat: "Flat"
+  Email: "Email"
+  ent-password: "Enter password"
+  password-char: "characters minimum"
+  password-conf: "Password confirmation"
+  spec: "Specialization"
+  remember-me: "Remember me"
+  forget-password: "Forget your password?"
+
+  all-services: "All Services"
+  services: "Services"
+  service: "Service"
+
+  # Footer
+  about-us: "About Us"
+  bee-proj: "About the Bee project"
+  contact: "Contacts"
+
+  how-it-works: "How it Works"
+  how-to-order: "How to order a service"
+  how-to-reg: "How to register an FOP"
+  warranty-safety: "Warranty and safety"
+  latest-rev: "Latest reviews"
+  Top-perf: "Top performers"
+
+  help: "Help"
+  QA: "Questions and answers"
+  PP: "Privacy Policy"
+  PO: "Public offer"
+  support-service: "Support service"
+
+  follow-us: "Follow Us"
+
+  show-more: "Show more"
+  delete: "Delete"
+  save: "Save"
+  select: "Select"
+  update: "Update"
+  add-fav: "Add to favorite"
+  edit-profile-cli: "Edit this client profile"
+  show-my-orders: "Show my orders"
+  show-fav: "Show my favourites"
+  back-main-page: "Back to main page"
+  back-to-profile: "Back to profile"
+  back-to-calendar: "Back to calendar"
+  back-to-orders: "Back to orders"
+
+  # Service
+  title: "Title"
+  serv-type: "Service type"
+  difficulty: "Difficulty"
+  creator: "Who created"
+
+  # Favorites
+  my-fav: "My favorites"
+
+  no-favorite: "You haven't selected any services as favorites yet"
+
+  # Edit Profile
+  edit-prof: "Edit Profile"
+  curr-pass: "Current password"
+  leave-blank: "leave blank if you don't want to"
+  change-it: "change it"
+  need-current: "we need your current"
+  password-confirm: "password to confirm your changes"
+  cancel-acc: "Cancel my account"
+  unhappy: "Unhappy"
+
+  # Order
+  new-order: "New Order"
+  order:
+    one: "Order"
+    many: "Orders"
+  status: "Status"
+  client: "Client"
+  employee: "Employee"
+  select-emp: "Select Employee"
+  urgency: "Urgency"
+  date-order: "Date Order"
+  price: "Price"
+  edit-order: "Edit this order"
+  show-order: "Show this order"
+
+  editing-order: "Editing order"
+
+  not-approved: "Not approved orders"
+  approved: "Approved orders"
+  in-progress: "Orders in progress"
+  done: "Done orders"
+
+  to-approve: "Approve"
+  to-progress: "In progress"
+  to-done: "Done"
+
+  # Comment
+  comment:
+    one: "Comment"
+    many: "Comments"
+  save-comm: "Save Comment"
+  from: "From"
+  date-comm: "Date"
+
+  # New Service
+  new-serv: "New Service"
+  create-serv: "Create Service"
+
+  # Employee profiles
+  emp-profile:
+    one: "Employee profile"
+    many: "Employee profiles"
+  date-reg: "Date registration"
+  edit-profile-emp: "Edit this employee profile"
+
+  # Exchange
+  exchange-rates: "Exchange Rates"
+  to-UAH: "to UAH"
+  buy: "Buy"
+  sale: "Sale"
+
+  date:
+    formats:
+      default: "%Y-%m-%d"
+
+

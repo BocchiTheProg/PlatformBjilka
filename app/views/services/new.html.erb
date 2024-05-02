@@ -1,8 +1,8 @@
 <div class="container">
-  <h2 class="title-lg mb">New service</h2>
+  <h2 class="title-lg mb"><%= t("new-serv") %></h2>
   <%= render "form", service: @service %>
   <br>
   <div>
-    <%= link_to "Back to main page", root_path, class: 'button button-yellow'%>
+    <%= link_to t("back-main-page"), root_path, class: 'button button-yellow'%>
   </div>
 </div>

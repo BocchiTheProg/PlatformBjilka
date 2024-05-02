@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title-lg mb">Services</h2>
+  <h2 class="title-lg mb"><%= t("services") %></h2>
   <p style="color: green"><%= notice %></p>
 
   <% @services.each_with_index do |service, index| %>
@@ -9,13 +9,13 @@
     </div>
     
     <div class="mt-md ml-bt">  
-      <%= link_to "Show more", service_path(service.id), class: 'button button-main' %>
+      <%= link_to t("show-more"), service_path(service.id), class: 'button button-main' %>
     </div>
 
   <% end %>
   
   <br>
   <div class="field mt-ls">
-    <%= link_to "Back to main page", root_path, class: 'button button-yellow' %>
+    <%= link_to t("back-main-page"), root_path, class: 'button button-yellow' %>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title-lg mb">Edit Profile</h2>
+  <h2 class="title-lg mb"><%= t("edit-prof") %></h2>
  
   <% resource.build_employee_profile if resource.employee_profile.nil? %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -7,22 +7,22 @@
 
   <%= f.fields_for :employee_profile do |ui| %>
     <div class="field mt ml">
-      <%= ui.label :first_name %><br />
+      <%= ui.label t("first-name") %><br />
       <%= ui.text_field :first_name, autofocus: true, class: 'form-text-field' %>
     </div>
 
     <div class="field mt ml">
-      <%= ui.label :last_name %><br />
+      <%= ui.label t("last-name") %><br />
       <%= ui.text_field :last_name, class: 'form-text-field' %>
     </div>
 
     <div class="field mt ml">
-      <%= ui.label :phone %><br />
+      <%= ui.label t("phone") %><br />
       <%= ui.text_field :phone, class: 'form-text-field' %>
     </div>
 
     <div class="field mt ml">
-      <%= ui.label :specialization %><br />
+      <%= ui.label t("spec") %><br />
       <%= ui.collection_select :specialization_id, Specialization.all, :id, :title, { prompt: 'Select specialization' }, class: 'form-text-field', style: 'width: 300px;' %>
     </div>
   <% end %>
@@ -37,32 +37,32 @@
   <% end %>
 
   <div class="field mt ml">
-    <%= f.label :password %> <i>(leave blank if you don't want to <br>change it)</i><br />
+    <%= f.label t("ent-password") %> <i>(<%= t("leave-blank")%> <br><%= t("change-it")%>)</i><br />
     <%= f.password_field :password, autocomplete: "new-password", class: 'form-text-field' %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> <%= t("password-char")%></em>
     <% end %>
   </div>
 
   <div class="field mt ml">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label t("password-conf") %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-text-field' %>
   </div>
 
   <div class="field mt ml">
-    <%= f.label :current_password %> <i>(we need your current<br>password to confirm your changes)</i><br />
+    <%= f.label t("curr-pass") %> <i>(<%= t("need-current") %><br><%= t("password-confirm") %></i><br />
     <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-text-field' %>
   </div>
 
   <div class="actions mt ml mb">
-    <%= f.submit "Update", class: 'button button-main' %>
+    <%= f.submit t("update"), class: 'button button-main' %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3><%= t("cancel-acc") %></h3>
 <br>
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'button button-yellow' %></div>
+<div><%= t("unhappy") %>? <%= button_to t("cancel-acc"), registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'button button-yellow' %></div>
 <br>
-<%= link_to "Back to profile", :back, class: 'button button-main' %>
+<%= link_to t("back-to-profile"), :back, class: 'button button-main' %>
 </div>
