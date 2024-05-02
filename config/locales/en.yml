@@ -177,4 +177,24 @@ en:
     formats:
       default: "%Y-%m-%d"
 
+  # Notice messages
+  cli-like-create: "Client like was successfully created."
+  cli-like-update: "Client like was successfully updated."
+  cli-like-delete: "Client like was successfully destroyed."
+  cli-like-add: "Service added to favorites"
 
+  cli-prog-update: "Client profile was successfully updated."
+
+  comm-create: "Comment was successfully created"
+  comm-delete: "Comment was successfully destroyed"
+
+  order-create: "Order was successfully created."
+  order-update: "Order was successfully updated."
+  order-delete: "Order was successfully destroyed."
+
+  serv-create: "Service was successfully created."
+  serv-update: "Service was successfully updated."
+  serv-delete: "Service was successfully destroyed."
+
+  # Alert messages
+  cli-like-exist: "This service is already in favorites for this profile"

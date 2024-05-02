@@ -28,10 +28,10 @@ class ClientProfilesController < ApplicationController
     existing_like = ClientLike.find_by(client_profile_id: @client_profile.id, service_id: @service.id)
 
     if existing_like
-      flash[:alert] = "This service is already in favorites for this profile"
+      flash[:alert] = t("cli-like-exist")
     else
       @client_likes = ClientLike.create(client_profile_id: @client_profile.id, service_id: @service.id)
-      flash[:notice] = "Service added to favorites"
+      flash[:notice] = t("cli-like-add")
     end
 
     redirect_to service_path(@service)
@@ -56,7 +56,7 @@ class ClientProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @client_profile.update(client_profile_params)
-        format.html { redirect_to @client_profile, notice: "Client profile was successfully updated." }
+        format.html { redirect_to @client_profile, notice: t("cli-prog-update") }
         format.json { render :show, status: :ok, location: @client_profile }
       else
         format.html { render :edit, status: :unprocessable_entity }

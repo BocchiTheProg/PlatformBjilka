@@ -148,3 +148,24 @@ ua:
     formats:
       default: "%d-%m-%Y"
 
+  # Notice messages
+  cli-like-create: "Улюблена послуга була створена."
+  cli-like-update: "Улюблена послуга була оновлена."
+  cli-like-delete: "Улюблена послуга була видалена."
+  cli-like-add: "Послуг була додана до улюблених"
+
+  cli-prog-update: "Профіль було успішно оновлено."
+
+  comm-create: "Коментар було створено."
+  comm-delete: "Коментар було видалено."
+
+  order-create: "Замовлення було створено."
+  order-update: "Замовлення було оновлено."
+  order-delete: "Замовлення було видалено."
+
+  serv-create: "Послуга була створено."
+  serv-update: "Послуга була оновлена."
+  serv-delete: "Послуга була видалена."
+
+  # Alert messages
+  cli-like-exist: "Ця послуга вже знаходиться в улюблених"
