@@ -1,53 +1,99 @@
 <div class="container">
-  <h2 class="title-lg mb"><%= t("order.one") %></h2>
+  <h2 class="title-lg mb"><%= t('orders_data.show.title') %></h2>
   <p style="color: green"><%= notice %></p>
   
   <div class="user-card mt-ls">
+    
+    <div class="user-card-img">     
+      <div class="mt-md">
+        <% if @order.avatar.attached? %>
+          <%= image_tag(@order.avatar, width: "300", height: "200") %>
+        <% else %>
+          <img src="<%= image_path('question.jpg') %>" alt="Sorry, smth went wrong(((">
+        <% end %>
+      </div>
+    </div>
+
     <%= render @order %>
   </div>
 
   <div class="mt-ls">
     
-    <% if current_employee && Status.find_by(id: @order.status_id).title != "Done" %>
-      <%= link_to t("edit-order"), edit_order_path(@order.id), class: 'button button-yellow' %>
+    <% if current_employee %>
+      <%= link_to t("update"), edit_order_path(@order.id), class: 'button button-yellow' %>
     <% end %>
 
     <% if current_client && Status.find_by(id: @order.status_id).title == "Done" %>
+      <p><%= t('orders_data.show.evaluate_order_quality') %>:</p>
+      <div class="flex gap-x-3 mb-4"
+        data-controller="star-bar"
+          data-star-bar-hover-class="fill-yellow-500 stroke-yellow-500">
+          <% Order::MAX_RATING.times do |n| %>
+            <%= button_to order_path(@order),
+              method: :patch,
+              params: { order: { rating: n + 1 } } do %>
+              <%= inline_svg_tag("star.svg",
+                class: "w-8 h-8 #{star_rating_class(@order, n)}",
+                data: {
+                  star_bar_target: "star",
+                  star_bar_star_index_param: n,
+                  action: "pointerenter->star-bar#enter
+                    pointerleave->star-bar#leave"
+                }) %>
+            <% end %>
+          <% end %>
+      </div>
+
+
       <%= form_for(@comment = Comment.new) do |f| %>
         <div class="form-wrapper">
           <div class="field mt">
-            <%= f.label :content, t("comment.one"), style: "display: block" %>
+            <%= f.label :content, t('orders_data.show.comment'), style: "display: block" %>
+
             <%= f.text_area :content, class: 'form-text-area' %>
           </div>
           <%= hidden_field_tag :order_id, @order.id %>
           <div class="field mt">
-            <%= f.submit t("save-comm"), class: 'button button-main' %>
+            <%= f.submit t('save'), class: 'button button-main' %>
           </div>
         </div>
       <% end %>
       <br><br>
 
-      <h2 class="title-lg mb" style="text-align: center;"><%= t("comment.many") %></h2>
-      <% comments = @order.comments.where(order_id: @order.id).order(created_at: :desc) %>
-      <% if comments.any? %>
-        <% comments.each do |comment| %>
+      <h2 class="title-lg mb" style="text-align: center;"><%= t('orders_data.show.comments_title') %></h2>
+      <% if @comments.any? %>
+        <% @comments.each do |comment| %>
           <div class="empty-user-card mb">
           <div class="comment-card">
-            <span class="comment-meta-right">
-              <%= button_to "", comment, method: :delete, class: 'delete-link fa fa-trash' %>
-            </span>
+
+            <% if Order.find(comment.order_id).client_profile_id == current_client.id %>
+              <span class="comment-meta-right">
+                  <%= button_to "", comment, method: :delete, class: 'delete-link fa fa-trash' %>
+              </span>
+            <% end %>
+            
             <p class="comment-meta">
-              <strong><%= t("from") %>:</strong> <%= "#{Order.find_by(id: comment.order_id).client_profile.first_name} #{Order.find_by(id: comment.order_id).client_profile.last_name}" %> <br>
-              <strong><%= t("date-comm") %>:</strong> <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+              <strong><%= t('orders_data.show.from') %></strong> <%= "#{Order.find_by(id: comment.order_id).client_profile.first_name} #{Order.find_by(id: comment.order_id).client_profile.last_name}" %> <br>
+              <strong><%= t('orders_data.show.date') %></strong> <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
             </p>
+
+            <br><br>
+
             <p class="comment-content">
               <%= comment.content %>
             </p>
+
+            <br>
+
+            <p class="comment-meta-bottom">
+            <strong><%= t('orders_data.show.for') %></strong> <%= "#{EmployeeProfile.find(Order.find_by(id: comment.order_id).employee_profile_id).last_name} #{EmployeeProfile.find(Order.find_by(id: comment.order_id).employee_profile_id).first_name}, #{Service.find(Order.find_by(id: comment.order_id).service_id).title}" %> <br>
+          </p>
+
           </div>
           </div>
         <% end %>
       <% else %>
-        <p style="text-align: center;">No comments for this order yet</p>
+        <p style="text-align: center;"><%= t('orders_data.show.comment_absence_message') %></p>
       <% end %>
         <br>
 
@@ -55,13 +101,12 @@
 
     <% if current_client %>
       <div class="mt-ls" style="text-align: center;">
-        <%= link_to t("edit-order"), edit_order_path(@order.id), class: 'button button-yellow' %>
-        <%= link_to t("order.many"), orders_path, class: 'button button-yellow' %>
-        <%= link_to t("back-to-calendar"), calendar_path(current_client_id: current_client.id, start_date: params[:start_date]), class: 'button button-yellow' %>
+        <%= link_to t('orders'), orders_sorted_by_date_path(client_profile_id: @order.client_profile_id), class: 'button button-yellow' %>
+        <%= link_to t('calendar_button'), calendar_path(current_client_id: current_client.id, start_date: params[:start_date]), class: 'button button-yellow' %>
       </div>
     <% elsif current_employee %>
-      <%= link_to t("order.many"), not_approved_orders_path, class: 'button button-yellow' %>
-      <%= link_to t("back-to-calendar"), employee_calendar_path(current_employee_id: current_employee.id, start_date: params[:start_date]), class: 'button button-yellow' %>
+      <%= link_to t('orders'), not_approved_orders_path(employee_profile_id: current_employee.id), class: 'button button-yellow' %>
+      <%= link_to t('calendar_button'), employee_calendar_path(current_employee_id: current_employee.id, start_date: params[:start_date]), class: 'button button-yellow' %>
     <% end %>  
   </div>
 </div>

@@ -28,3 +28,4 @@ class Clients::ConfirmationsController < Devise::ConfirmationsController
   #   super(resource_name, resource)
   # end
 end
+

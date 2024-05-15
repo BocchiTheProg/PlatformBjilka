@@ -1,0 +1,5 @@
+<%- headers = ['Order ID', 'Status', 'Client Profile', 'Employee Profile', 'Urgency', 'Date Order', 'Service', 'Price'] -%>
+<%= CSV.generate_line headers %>
+<%- @orders.each do |order| -%>
+<%= CSV.generate_line([order.id, order.status.title, ClientProfile.find(order.client_profile_id).last_name + " " + ClientProfile.find(order.client_profile_id).first_name, EmployeeProfile.find(order.employee_profile_id).last_name + " " + EmployeeProfile.find(order.employee_profile_id).first_name, order.urgency.title, order.date_order, Service.find(order.service_id).title, order.price.to_s + " " + ClientProfile.find(order.client_profile_id).currency_type.split(" (").first]) -%>
+<%- end -%>

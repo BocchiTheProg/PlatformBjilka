@@ -9,8 +9,16 @@
     width: 280px;
 }
 
+.search-form-text-field {
+    border: 1px solid #d0d0d0;
+    padding: 7.5px 10px;
+    padding-left: 10px;
+    width: 180px;
+}
+
 .form-text-area:focus,
-.form-text-field:focus {
+.form-text-field:focus,
+.searchform-text-field:focus {
     background-color: #FEE9C3;
     outline-width: 0;
 }

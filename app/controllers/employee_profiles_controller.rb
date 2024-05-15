@@ -1,5 +1,6 @@
 class EmployeeProfilesController < ApplicationController
-  before_action :set_employee_profile, only: %i[show edit update destroy]
+
+  before_action :set_employee_profile, only: %i[ show edit update destroy ]
 
   # GET /employee_profiles or /employee_profiles.json
   def index
@@ -8,6 +9,10 @@ class EmployeeProfilesController < ApplicationController
 
   # GET /employee_profiles/1 or /employee_profiles/1.json
   def show
+    # orders = Order.where(employee_profile_id: @employee_profile.id, status_id: Status.find_by(title: "Done").id)
+    # average_rating = orders.average(:rating)
+    # average_rating ||= 0
+    # @employee_profile.update(rating: average_rating)
   end
 
   # GET /employee_profiles/new
@@ -40,6 +45,7 @@ class EmployeeProfilesController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /employee_profiles/1 or /employee_profiles/1.json
   def update
     respond_to do |format|
@@ -64,14 +70,14 @@ class EmployeeProfilesController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_employee_profile
+      @employee_profile = EmployeeProfile.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_employee_profile
-    @employee_profile = EmployeeProfile.find(params[:id])
-  end
+    # Only allow a list of trusted parameters through.
+    def employee_profile_params
+      params.require(:employee_profile).permit(:first_name, :last_name, :phone, :date_registration, :user_id, :specialization_id, :rating)
+    end
 
-  # Only allow a list of trusted parameters through.
-  def employee_profile_params
-    params.require(:employee_profile).permit(:first_name, :last_name, :phone, :date_registration, :user_id, :specialization_id)
-  end
 end

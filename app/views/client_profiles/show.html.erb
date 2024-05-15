@@ -13,16 +13,24 @@
       <p style="color: green"><%= notice %></p>
         <div class="user-card">
             <div class="user-card-img">
-              <img src="<%= image_path('img1.jpg') %>" alt="Sorry, smth went wrong(((">
+              
+              <div class="mt-md">
+                <% if @client_profile.avatar.attached? %>
+                  <%= image_tag(@client_profile.avatar, width: "300", height: "200") %>
+                <% else %>
+                  <img src="<%= image_path('unknown.jpg') %>" alt="Sorry, smth went wrong(((">
+                <% end %>
+              </div>
+
             </div>
             <%= render @client_profile %>
         </div>
 
         <div class="mt-ls">
-          <%= link_to t('edit-profile-cli'), edit_client_profile_path, class: 'button button-yellow' %>
-          <%= link_to t('show-my-orders'), orders_path(client_profile_id: @client_profile.id), class: 'button button-yellow'%>
-          <%= link_to t("show-fav"), client_likes_path(@client_likes), class: 'button button-yellow'%>
-          <%= link_to t('back-main-page'), root_path, class: 'button button-yellow' %>
+          <%= link_to t('.edit'), edit_client_profile_path, class: 'button button-yellow' %>
+          <%= link_to t('.show_orders'), orders_sorted_by_date_path(client_profile_id: @client_profile.id), class: 'button button-yellow'%>
+          <%= link_to t('.show_favourites'), client_likes_path(@client_likes), class: 'button button-yellow'%>    
+          <%= link_to t('back_to_main'), root_path, class: 'button button-yellow' %>
         </div>    
     </div>
       

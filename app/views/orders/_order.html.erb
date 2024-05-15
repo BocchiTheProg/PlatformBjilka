@@ -1,40 +1,64 @@
 <div id="<%= dom_id order %>">
-  <p>
-    <strong><%= t("status")%>:</strong>
-    <%= Status.find_by(id: order.status_id).title %>
-  </p>
+  
+  <div class="mt-md">
+    <strong><%= t('orders_data.order.status') %>:</strong>
+    <% if I18n.locale == :uk %>
+      <%= I18n.t("status.status_titles.#{Status.find_by(id: order.status_id).title.parameterize.underscore}") %>
+    <% else %>
+      <%= Status.find_by(id: order.status_id).title %>
+    <% end %>
+  </div>
 
-  <p>
-    <strong><%= t("client")%>:</strong>
+  <div class="mt-md">
+    <strong><%= t('orders_data.order.client') %>:</strong>
     <%= ClientProfile.find_by(id: order.client_profile_id)&.first_name %>
     <%= ClientProfile.find_by(id: order.client_profile_id)&.last_name %>
-  </p>
+  </div>
 
-  <p>
-    <strong><%= t("employee")%>:</strong>
+  <div class="mt-md">
+    <strong><%= t('orders_data.order.employee') %>:</strong>
     <%= EmployeeProfile.find_by(id: order.employee_profile_id)&.first_name %>
     <%= EmployeeProfile.find_by(id: order.employee_profile_id)&.last_name %>
-  </p>
+  </div>
 
+  <div class="mt-md">
+    <strong><%= t('orders_data.order.urgency') %>:</strong>    
+    <% if I18n.locale == :uk %>
+      <%= I18n.t("urgency.urgency_titles.#{Urgency.find_by(id: order.urgency_id).title.parameterize.underscore}") %>
+    <% else %>
+      <%= Urgency.find_by(id: order.urgency_id).title %>
+    <% end %>
+  </div>
 
-  <p>
-    <strong><%= t("urgency")%>:</strong>
-    <%= Urgency.find_by(id: order.urgency_id).title %>
-  </p>
+  <div class="mt-md">
+    <strong><%= t('orders_data.order.date_order') %>:</strong>
+    <%= order.date_order.to_date  %>
+  </div>
 
-  <p>
-    <strong><%= t("date-order")%>:</strong>
-    <%= l(order.date_order.to_date, format: :default)  %>
-  </p>
+  <div class="mt-md">
+    <strong><%= t('orders_data.order.service') %>:</strong>
+    
+    <% if I18n.locale == :uk %>
+      <%= I18n.t("index.home.services_titles.#{Service.find_by(id: order.service_id).title.parameterize.underscore}") %>
+    <% else %>
+      <%= Status.find_by(id: order.status_id).title %>
+    <% end %>
+  </div>
 
-  <p>
-    <strong><%= t("service")%>:</strong>
-    <%= Service.find_by(id: order.service_id).title %>
-  </p>
+  <div class="mt-md">
+    <div class="flex gap-x-3 mb-4">
+      <strong><%= t('orders_data.order.rating') %>:</strong>
+      <% Order::MAX_RATING.times do |n| %>
+        <%= inline_svg_tag("star.svg",
+          class: "w-2 h-2 #{star_rating_class(order, n)}") %>
+      <% end %>
+    </div>
+  </div>
 
-  <p>
-    <strong><%= t("price")%>:</strong>
-    <%= "#{order.price} $" %>
-  </p>
-
+  <div class="mt-md">
+    <strong><%= t('orders_data.order.price') %>:</strong>
+    <% currency_type = ClientProfile.find(order.client_profile_id).currency_type %>
+    <% match_data = currency_type.match(/\(([^)]+)\)/) %>
+    <%= "#{order.price} #{match_data[1]}" if match_data %>
+  </div>
 </div>

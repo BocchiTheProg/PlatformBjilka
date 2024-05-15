@@ -12,29 +12,39 @@
   <% end %>
 
   <div class="field mt">
-    <%= form.label t("first-name"), style: "display: block" %>
+    <%= form.label :avatar, t('.avatar') + ":" %>
+    <%= form.file_field :avatar %>
+  </div>
+
+  <div class="field mt">
+    <%= form.label :first_name, t('profile_basic_data.first_name'), style: "display: block" %>
     <%= form.text_field :first_name, autofocus: true, class: 'form-text-field' %>
   </div>
 
   <div class="field mt">
-    <%= form.label t("last-name"), style: "display: block" %>
+    <%= form.label :last_name, t('profile_basic_data.last_name'), style: "display: block" %>
     <%= form.text_field :last_name, class: 'form-text-field' %>
   </div>
 
   <div class="field mt">
-    <%= form.label t("phone"), style: "display: block" %>
+    <%= form.label :phone, t('profile_basic_data.phone'), style: "display: block" %>
     <%= form.text_field :phone, class: 'form-text-field' %>
+  </div>
+
+  <div class="field mt">
+    <%= form.label :currency_type, t('client_profiles.client_profile.preferred_currency') %><br />
+    <%= form.select :currency_type, options_for_select(['EUR (€)', 'USD ($)', 'UAH (₴)'],  @client_profile.currency_type), {}, class: 'form-text-field', style: "width: 300px;" %>
   </div>
 
   <%= form.fields_for :client, client_profile.client do |user_fields| %>
     <div class="field mt">
       <%= user_fields.label :email, style: "display: block" %>
       <%= user_fields.text_field :email, class: 'form-text-field' %> 
-    </div>
+  </div>
 
   <div class="field mt">
-    <%= user_fields.label t("ent-password") %> <i>(<%= t("leave-blank") %><br><%= t("change-it") %>)</i><br />
-    <%= user_fields.password_field :password, autocomplete: "new-password", class: 'form-text-field'   %>
+    <%= user_fields.label :password, t('devise_fields.password') %> <i>(<%= t('.password_part_one') %><br><%= t('.password_part_two') %>)</i><br />
+    <%= user_fields.password_field :password, autocomplete: "new-password", class: 'form-text-field' %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> <%= t("password-char") %>></em>
@@ -43,7 +53,7 @@
   <% end %>
 
   <div class="field mt">
-    <%= form.submit t("save"), class: 'button button-main' %>
+    <%= form.submit t('save'), class: 'button button-main' %>
   </div>
 
 <% end %>

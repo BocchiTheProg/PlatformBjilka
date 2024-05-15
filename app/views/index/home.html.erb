@@ -8,51 +8,68 @@
     <div class="container">
         <p class="title-md"style="color: green"><%= notice %></p>
 
-        <h1><%= t("all-services") %></h1>
+        <div class="mt-md mb-ls">
+            <% if client_signed_in? %>
+                <%= link_to t(".best"), best_employees_path, class: 'button button-yellow'%>
+            <% end %>
+        </div>
+
+        <h1><%= t(".services_header") %></h1>
         <div class="grid-container">
         <% @services_by_type.each do |service_type, services| %>
             <div class="service-type-container">
-            <h2 class="grid-item"><%= service_type %></h2>
+            <% if I18n.locale == :uk %>
+                <% type_key = "index.home.services_types.#{service_type.parameterize.underscore}" %>
+                <% if I18n.exists?(type_key, locale: :uk) %>
+                    <h2 class="grid-item"><%= t(type_key) %></h2>
+                <% else %>
+                    <h2 class="grid-item"><%= service_type %></h2>
+                <% end %>
+            <% else %>
+                <h2 class="grid-item"><%= service_type %></h2>
+            <% end %>
             <ul class="service-list">
                 <% services.each do |service| %>
-                <li><%= link_to service.title, service_path(service) %></li>
+                <% key = "index.home.services_titles.#{service.title.parameterize.underscore}" %>
+                <% if I18n.exists?(key, locale: :uk) %>
+                    <li><%= link_to t(key), service_path(service) %></li>
+                <% else %>
+                    <li><%= link_to service.title, service_path(service) %></li>
+                <% end %>
                 <% end %>
             </ul>
             </div>
         <% end %>
         </div>
 
-
         <footer class="footer">
             <div class="row">
                 <div class="footer-col">
-                    <h4><%= t("about-us") %></h4>
+                    <h4><%= t(".footer.about_us") %></h4>
                     <ul>
-                        <li><a href="#"><%= t("bee-proj") %></a></li>
-                        <li><a href="#"><%= t("contact") %></a></li>
+                        <% t('.footer.about_us_list').each do |key, value| %>
+                            <li><%= link_to t(".footer.about_us_list.#{key}"), '#' %></li>
+                        <% end %>
+                  </ul>
+                </div>
+                <div class="footer-col">
+                    <h4><%= t(".footer.how_it_works") %></h4>
+                    <ul>
+                        <% t('.footer.how_it_works_list').each do |key, value| %>
+                            <li><%= link_to t(".footer.how_it_works_list.#{key}"), '#' %></li>
+                        <% end %>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4><%= t("how-it-works") %></h4>
+                    <h4><%= t(".footer.help") %></h4>
                     <ul>
-                        <li><a href="#"><%= t("how-to-order") %></a></li>
-                        <li><a href="#"><%= t("how-to-reg") %></a></li>
-                        <li><a href="#"><%= t("warranty-safety") %></a></li>
-                        <li><a href="#"><%= t("latest-rev") %></a></li>
-                        <li><a href="#"><%= t("top-perf") %></a></li>
+                        <% t('.footer.help_list').each do |key, value| %>
+                            <li><%= link_to t(".footer.help_list.#{key}"), '#' %></li>
+                        <% end %>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4><%= t("help") %></h4>
-                    <ul>
-                        <li><a href="#"><%= t("QA") %></a></li>
-                        <li><a href="#"><%= t("PP") %></a></li>
-                        <li><a href="#"><%= t("PO") %></a></li>
-                        <li><a href="#"><%= t("support-service") %></a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4><%= t("follow-us") %></h4>
+                    <h4><%= t(".footer.follow") %></h4>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>

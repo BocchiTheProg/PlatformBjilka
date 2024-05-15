@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1/edit
-  def edit
+  def edit 
   end
 
   # POST /comments or /comments.json
@@ -27,12 +27,12 @@ class CommentsController < ApplicationController
 
     @order = Order.find(params[:order_id])
     @comment = @order.comments.new(comment_params)
-    @comment.created_at = DateTime.current
+    @comment.created_at = DateTime.current 
 
     respond_to do |format|
       if @comment.save
-        # format.html { redirect_to comment_url(@comment), notice: 'Comment was successfully created.' }
-        format.html { redirect_to order_url(@comment.order_id), notice: t("comm-create") }
+        #format.html { redirect_to comment_url(@comment), notice: 'Comment was successfully created.' }
+        format.html { redirect_to order_url(@comment.order_id), notice: 'Comment was successfully created' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -59,7 +59,7 @@ class CommentsController < ApplicationController
     @comment.destroy!
 
     respond_to do |format|
-      format.html { redirect_to order_url(@comment.order_id), notice: t("comm-delete") }
+      format.html { redirect_to order_url(@comment.order_id), notice: 'Comment was successfully destroyed' }
       format.json { head :no_content }
     end
   end

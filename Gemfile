@@ -82,9 +82,7 @@ group :development, :test do
 end
 
 gem 'devise', '~> 4.9'
-
 # gem "gem", "~> 0.0.1.alpha"
-
 gem 'simple_calendar', '~> 3.0'
 
 gem "sassc-rails"
@@ -97,4 +95,6 @@ gem 'activeadmin'
 
 gem 'net-http'
 
-gem "city-state", "~> 1.1"
+gem 'pry'
+
+gem 'rails-i18n'

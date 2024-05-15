@@ -5,6 +5,7 @@ class CreateEmployeeProfiles < ActiveRecord::Migration[7.1]
       t.string :last_name
       t.string :phone
       t.datetime :date_registration
+      t.decimal :rating, null: false, default: 0
       t.references :employee, null: false, foreign_key: true
       t.references :specialization, null: false, foreign_key: true
 
@@ -12,3 +13,4 @@ class CreateEmployeeProfiles < ActiveRecord::Migration[7.1]
     end
   end
 end
+

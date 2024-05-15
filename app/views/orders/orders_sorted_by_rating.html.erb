@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="dropdown">
+  <button class="dropbtn"><%= t('orders_data.orders_sorted_by_services.by_rating') %></button>
+
+  <div class="dropdown-content">
+    <%= link_to t('orders_data.orders_sorted_by_services.by_date'), orders_sorted_by_date_path(client_profile_id: current_client.id) %>
+    <%= link_to t('orders_data.orders_sorted_by_services.by_comments'), orders_sorted_by_comments_path(client_profile_id: current_client.id) %>
+    <%= link_to t('orders_data.orders_sorted_by_services.by_services'), orders_sorted_by_services_path(client_profile_id: current_client.id) %>
+    <%= link_to t('orders_data.orders_sorted_by_services.by_rating'), orders_sorted_by_rating_path(client_profile_id: current_client.id) %>
+  </div>
+
+  </div>
+  <br><br>
+  <% if alert.present? %>
+    <p class="mt-ls mb-ls" style="color: red"><%= alert %></p>
+  <% end %>
+
+  <div id="orders">
+  <% @orders.each do |order| %>
+    <div class="user-card mt-ls">
+
+      <div class="user-card-img">     
+        <div class="mt-md">
+          <% if order.avatar.attached? %>
+            <%= image_tag(order.avatar, width: "300", height: "200") %>
+          <% else %>
+            <img src="<%= image_path('question.jpg') %>" alt="Sorry, smth went wrong(((">
+          <% end %>
+        </div>
+      </div>
+
+      <%= render order %>
+    </div>
+
+    <p class="mt">
+      <%= link_to t('show_more'), order_path(order.id), class: 'button button-main' %>
+    </p>
+      <br/>
+    <% end %>
+  </div>
+
+  <div class="mt-ls">
+    <%= link_to t('export'), orders_path(format: :csv), class: 'button button-yellow'  %>
+    <%= link_to t('show_profile'), client_profile_path(current_client), class: 'button button-yellow' %>
+    <%= link_to t('back_to_main'), root_path, class: 'button button-yellow' %>
+  </div>
+
+</div>

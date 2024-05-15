@@ -28,173 +28,182 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
-
-  # Navbar
-  search: "Search..."
-  btn-submit: "Submit"
-  my-profile: "My profile"
-  create-service: "Create Service"
-  calendar: "Calendar"
-  create-order: "Create Order"
-  sign-out: "Sign out"
-  sign-up: "Sign up"
-  log-in: "Log in"
-
-  # Registration
-  choose-option: "Choose the option:"
-  sign-up-cli: "Sign up as client"
-  sign-up-emp: "Sign up as employee"
-
-  # forms
-  first-name: "First name"
-  last-name: "Last name"
-  phone: "Phone"
-  country: "Country"
-  state: "State"
-  city: "City"
-  build: "Build"
-  flat: "Flat"
-  Email: "Email"
-  ent-password: "Enter password"
-  password-char: "characters minimum"
-  password-conf: "Password confirmation"
-  spec: "Specialization"
-  remember-me: "Remember me"
-  forget-password: "Forget your password?"
-
-  all-services: "All Services"
-  services: "Services"
-  service: "Service"
-
-  # Footer
-  about-us: "About Us"
-  bee-proj: "About the Bee project"
-  contact: "Contacts"
-
-  how-it-works: "How it Works"
-  how-to-order: "How to order a service"
-  how-to-reg: "How to register an FOP"
-  warranty-safety: "Warranty and safety"
-  latest-rev: "Latest reviews"
-  Top-perf: "Top performers"
-
-  help: "Help"
-  QA: "Questions and answers"
-  PP: "Privacy Policy"
-  PO: "Public offer"
-  support-service: "Support service"
-
-  follow-us: "Follow Us"
-
-  show-more: "Show more"
+  hello: "Hello world!!!"
+  difficulty:
+    difficulty_titles:
+      medium: "Medium"
+  services_data:
+    service_name: "Service"
+    service_type_name: "Service type"
+    service:
+      title: "Title"
+      difficulty: "Difficulty" 
+      who_created: "Who created"
+      description: "Description"
+    new:
+      title: "New Service"
+  orders_data:
+    orders_sorted_by_services:
+      by_date: "Orders by date"
+      by_comments: "Orders by comments quantity"
+      by_rating: "Orders by quantity"
+      by_services: "Orders by services"
+    orders_statuses:
+      not_approved: "Not approved orders"
+      approved: "Approved orders"
+      in_progress: "Orders in progress"
+      done: "Done orders"
+      buttons:
+        approve: "Підтвердити"
+        in_progress: "У процесі"
+        done: "Виконано"
+    show:
+      title: "Order"
+      edit: "Edit order"
+      evaluate_order_quality: "Evaluate the quality of your order"
+      comment: "Want to leave feedback?"
+      comments_title: "Comments"
+      from: "From:"
+      for: "Comment for:"
+      date: "Date:"
+      comment_absence_message: "No comments for this order yet"
+    new:
+      title: "New Order"
+    edit:
+      title: "Edit Order"
+    form:
+      select_employee: "Select employee"
+      price: "Price"
+      date_order: "Order date"
+      urgency: "Urgency"
+      service: "Service"
+    order:
+      status: "Status"
+      client: "Client"
+      employee: "Employee"
+      urgency: "Urgency"
+      date_order: "Date order"
+      service: "Service"
+      rating: "Rating"
+      price: "Price"
+  index:
+    home:
+      welcome: "Привіт, %{name}"
+      best: "Best employees"
+      services_header: "All services"
+      footer:
+        about_us: "About us"
+        about_us_list:
+          about_bee_pr: "About the Bee project"
+          contacts: "Contacts"
+        how_it_works: "How it works"
+        how_it_works_list:
+          how_to_order_a_service: "How to order a service"
+          how_to_register_an_fop: "How to register an FOP"
+          warranty_and_safety: "Warranty and safety"
+          latest_reviews: "Latest reviews"
+          top_performers: "Top performers"
+        help: "Help"
+        help_list:
+          questions_and_answers: "Questions and answers"
+          privacy_policy: "Privacy Policy"
+          public_offer: "Public offer"
+          support_service: "Support service"
+        follow: "Follow us"
+  layouts:
+    application:
+      search_placeholder: "Search..."
+      search_button: "Search"
+      create_order_button: "Create Order"
+      create_service_button: "Create Service"
+      calendar_button: "Calendar"
+      profile_button: "Profile"
+  profile_basic_data:
+    first_name: "First name"
+    last_name: "Last name"
+    phone: "Phone"
+  employee_profiles:
+    employee_profile:
+      date_registration: "Дата регістрації"
+      rating: "Рейтінг"
+      specialization: "Спеціалізація"
+  client_profiles:
+    client_profile:
+      preferred_currency: "Preferred currency"
+    form:
+      avatar: "Avatar"
+      password_part_one: "leave blank if you don't"
+      password_part_two: "want to change it"
+    edit:
+      title: "Edit Profile"
+    show:
+      edit: "Edit this client profile"
+      show_orders: "Show my orders"
+      show_favourites: "Show my favourites"
+  client_likes:
+    index:
+      title: "Favourite services"
+      absence_message: "You haven't selected any services as favorites yet"
+  calendar:
+    today_title: "Today"
+  specialization:
+    specialization_titles:
+      tutor: "Репетитор"
+      locksmith: "Слюсар"
+      cook: "Кухар"
+  urgency:
+    urgency_titles:
+      critical: "Critical"
+      urgent: "Urgent"
+      normal: "Normal"
+      non_urgent: "Non-urgent"
+  status:
+    status_titles:
+      done: "Dome"
+      in_progress: "In Progress"
+      approved: "Approved"
+      not_approved: "Not Approved"
+  exchange_rates: 
+    title: "Exchange rates"
+    buy: "Buy"
+    sale: "Sale"
+    ccy:
+      USD: "USD"
+      UAH: "UAH"
+      EUR: "EUR"
+    to_UAH: "to UAH"
+  log_in:
+    title: "Log in"
+    remember_me: "Remember me"    
+  devise_fields:
+    password: "Password" 
+    min_symbols: "characters minimum"
+    password_confirmation: "Password confirmation"
+    current_password: "Current password"
+    password_part_one: "leave blank if you don't want to"
+    password_part_two: "change it"
+    current_password_part_one: "we need your current"
+    current_password_part_two: "password to confirm your changes" 
+  show_more: "Show more"
   delete: "Delete"
+  back_to_main: "Back to main page"
+  show_profile: "Profile"
   save: "Save"
-  select: "Select"
+  calendar_button: "Calendar"
+  orders: "Orders"
+  services: "Services"
+  select_employee: "Select employee"
+  add_to_fav: "Add to favoutites"
+  employees_orders: "Employees orders"
+  top_employees: "Top-3 employees"
+  back: "Back"
+  export: "Export Orders"
   update: "Update"
-  add-fav: "Add to favorite"
-  edit-profile-cli: "Edit this client profile"
-  show-my-orders: "Show my orders"
-  show-fav: "Show my favourites"
-  back-main-page: "Back to main page"
-  back-to-profile: "Back to profile"
-  back-to-calendar: "Back to calendar"
-  back-to-orders: "Back to orders"
 
-  # Service
-  title: "Title"
-  serv-type: "Service type"
-  difficulty: "Difficulty"
-  creator: "Who created"
-
-  # Favorites
-  my-fav: "My favorites"
-
-  no-favorite: "You haven't selected any services as favorites yet"
-
-  # Edit Profile
-  edit-prof: "Edit Profile"
-  curr-pass: "Current password"
-  leave-blank: "leave blank if you don't want to"
-  change-it: "change it"
-  need-current: "we need your current"
-  password-confirm: "password to confirm your changes"
-  cancel-acc: "Cancel my account"
-  unhappy: "Unhappy"
-
-  # Order
-  new-order: "New Order"
-  order:
-    one: "Order"
-    many: "Orders"
-  status: "Status"
-  client: "Client"
-  employee: "Employee"
-  select-emp: "Select Employee"
-  urgency: "Urgency"
-  date-order: "Date Order"
-  price: "Price"
-  edit-order: "Edit this order"
-  show-order: "Show this order"
-
-  editing-order: "Editing order"
-
-  not-approved: "Not approved orders"
-  approved: "Approved orders"
-  in-progress: "Orders in progress"
-  done: "Done orders"
-
-  to-approve: "Approve"
-  to-progress: "In progress"
-  to-done: "Done"
-
-  # Comment
-  comment:
-    one: "Comment"
-    many: "Comments"
-  save-comm: "Save Comment"
-  from: "From"
-  date-comm: "Date"
-
-  # New Service
-  new-serv: "New Service"
-  create-serv: "Create Service"
-
-  # Employee profiles
-  emp-profile:
-    one: "Employee profile"
-    many: "Employee profiles"
-  date-reg: "Date registration"
-  edit-profile-emp: "Edit this employee profile"
-
-  # Exchange
-  exchange-rates: "Exchange Rates"
-  to-UAH: "to UAH"
-  buy: "Buy"
-  sale: "Sale"
-
-  date:
-    formats:
-      default: "%Y-%m-%d"
-
-  # Notice messages
-  cli-like-create: "Client like was successfully created."
-  cli-like-update: "Client like was successfully updated."
-  cli-like-delete: "Client like was successfully destroyed."
-  cli-like-add: "Service added to favorites"
-
-  cli-prog-update: "Client profile was successfully updated."
-
-  comm-create: "Comment was successfully created"
-  comm-delete: "Comment was successfully destroyed"
-
-  order-create: "Order was successfully created."
-  order-update: "Order was successfully updated."
-  order-delete: "Order was successfully destroyed."
-
-  serv-create: "Service was successfully created."
-  serv-update: "Service was successfully updated."
-  serv-delete: "Service was successfully destroyed."
-
-  # Alert messages
-  cli-like-exist: "This service is already in favorites for this profile"
+  log_in_button: "Log in"
+  sign_up_button: "Sign up"
+  sign_out_button: "Sign out"
+  forgot_password_button: "Forgot your password?"
+  cancel_account: "Cancel my account"
+  unhappy: "Unhappy?"
+  

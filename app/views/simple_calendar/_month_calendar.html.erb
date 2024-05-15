@@ -42,7 +42,7 @@
 
     <nav style="text-align: center; margin-bottom: 30px;">
       <%= link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view, class: 'custom-month-link' %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: 'custom-month-link-red' %>
+      <%= link_to t('simple_calendar.today', default: t('calendar.today_title')), calendar.url_for_today_view, class: 'custom-month-link-red' %>
       <%= link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view, class: 'custom-month-link' %>
     </nav>
   </div>

@@ -29,7 +29,14 @@
           <%= date.strftime("%d") %>
         <% orders.each do |order| %>
           <div class="card-header">
+          
+
+            <% if I18n.locale == :uk %>
+              <%= link_to I18n.t("index.home.services_titles.#{Service.find_by(id: order.service_id).title.parameterize.underscore}"), order_path(order, start_date: date), class: "custom-link" %>
+            <% else %>
               <%= link_to Service.find_by(id: order.service_id).title, order_path(order, start_date: date), class: "custom-link" %>
+            <% end %>
+          
           </div>
         <% end %>
       <% end %>
@@ -38,7 +45,7 @@
     <br>
 
     <div class="mt md">
-      <%= link_to t("back-main-page"), root_path, class: 'button button-yellow' %> <br />
+      <%= link_to t('back_to_main'), root_path, class: 'button button-yellow' %> <br />
     </div>
     </div>
 </body>

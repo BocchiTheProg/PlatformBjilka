@@ -31,8 +31,16 @@ body {
 }
 
 .comment-meta {
+  color: blue;
   position: absolute;
   top: 10px;
+  left: 10px;
+}
+
+.comment-meta-bottom {
+  color: blue;
+  position: absolute;
+  bottom: 10px;
   left: 10px;
 }
 
@@ -124,4 +132,3 @@ body {
       font-size: 18px;
    }
  }
- 

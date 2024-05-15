@@ -17,6 +17,19 @@ Rails.application.routes.draw do
   end
 
   get '/select_registration', to: 'index#select_type', as: :select_registration
+  get '/best_employees', to: 'orders#best_employees', as: :best_employees
+  get '/best_employees_index', to: 'orders#best_employees_index', as: :best_employees_index
+
+  get '/not_approved_orders', to: 'orders#not_approved_orders', as: :not_approved_orders
+  get '/approved_orders', to: 'orders#approved_orders', as: :approved_orders
+  get '/in_progress_orders', to: 'orders#in_progress_orders', as: :in_progress_orders
+  get '/done_orders', to: 'orders#done_orders', as: :done_orders
+
+  get '/orders_sorted_by_date', to: 'orders#orders_sorted_by_date', as: :orders_sorted_by_date
+  get '/orders_sorted_by_comments', to: 'orders#orders_sorted_by_comments_quantity', as: :orders_sorted_by_comments
+  get '/orders_sorted_by_services', to: 'orders#orders_sorted_by_services', as: :orders_sorted_by_services
+  get '/orders_sorted_by_rating', to: 'orders#orders_sorted_by_rating', as: :orders_sorted_by_rating
+
 
   get '/exchange', to: 'index#exchange', as: :exchange
 
@@ -44,6 +57,7 @@ Rails.application.routes.draw do
 
   get 'calendar', to: "client_profiles#calendar", as: 'calendar'
   get 'employee_calendar', to: "employee_profiles#calendar", as: 'employee_calendar'
-
+  get 'exchange', to: 'index#exchange', as: :exchange
+  #get '/change_locale/:lang', to: 'application#change_locale', as: 'change_locale'
   get "up" => "rails/health#show", as: :rails_health_check
 end

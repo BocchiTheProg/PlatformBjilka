@@ -2,12 +2,20 @@
 
   <% service = Service.find_by(id: client_like.service_id) %>
   <p>
-    <strong><%= t("title") %>:</strong>
-    <%= service.title %>
+    <strong><%= t('services.service_name') %>:</strong>
+    <% if I18n.locale == :uk %>
+      <%= I18n.t("index.home.services_titles.#{service.title.parameterize.underscore}") %>
+    <% else %>
+      <%= service.title %>
+    <% end %>
   </p>
 
   <p>
-    <strong><%= t("serv-type") %>:</strong>
-    <%= service.service_type %>
+    <strong><%= t('services.service_type_name') %>:</strong>    
+    <% if I18n.locale == :uk %>
+      <%= I18n.t("index.home.services_types.#{service.service_type.parameterize.underscore}") %>
+    <% else %>
+      <%= service.service_type %>
+    <% end %>
   </p>
 </div>

@@ -18,3 +18,4 @@ class EmployeeProfile < ApplicationRecord
     ["created_at", "date_registration", "employee_id", "first_name", "id", "id_value", "last_name", "phone", "specialization_id", "updated_at"]
   end
 end
+

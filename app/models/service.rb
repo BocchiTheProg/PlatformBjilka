@@ -11,6 +11,7 @@ class Service < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "difficulty_id", "employee_profile_id", "id", "id_value", "service_type", "title", "updated_at"]
+    ["created_at", "description", "difficulty_id", "employee_profile_id", "id", "id_value", "service_type", "title", "updated_at"]
   end
+  
 end

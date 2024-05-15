@@ -7,15 +7,14 @@
     <p class="mb-ls" style="color: red"><%= alert %></p>
   <% end %>
 
-  <h2 class="title-lg mb"><%= t('service')%></h2>
+  <h2 class="title-lg mb"><%= t('services_data.service_name') %></h2>
 
   <%= render @service %>
-
   
     <div class="field mt">
       <% if client_signed_in? %>
-        <%= link_to t('add-fav'), add_to_favorites_service_path(service_id: @service.id, client_profile_id: current_client.id), method: :post, class: 'button button-yellow'  %>
+        <%= link_to t('add_to_fav'), add_to_favorites_service_path(service_id: @service.id, client_profile_id: current_client.id), method: :post, class: 'button button-yellow'  %>
       <% end %>
-      <%= link_to t('back-main-page'), root_path, class: 'button button-yellow' %>
+      <%= link_to t('back_to_main'), root_path, class: 'button button-yellow' %>
     </div>
 </div>

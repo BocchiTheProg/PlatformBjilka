@@ -10,3 +10,4 @@ class ClientLike < ApplicationRecord
     ["client_profile", "service"]
   end
 end
+

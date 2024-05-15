@@ -4,9 +4,11 @@ class CreateClientProfiles < ActiveRecord::Migration[7.1]
       t.string :first_name
       t.string :last_name
       t.string :phone
+      t.string :currency_type
       t.references :client, null: false, foreign_key: true
 
       t.timestamps
     end
   end
 end
+
