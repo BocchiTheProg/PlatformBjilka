@@ -1,10 +1,21 @@
 <div class="container">
-  <h2 class="title-lg mb"><%= t("order.many") %></h2>
+  <h2 class="title-lg mb"><%= t('orders') %></h2>
 <p style="color: green"><%= notice %></p>
 
 <div id="orders">
   <% @orders.each do |order| %>
     <div class="user-card mt-ls">
+
+      <div class="user-card-img">     
+        <div class="mt-md">
+          <% if order.avatar.attached? %>
+            <%= image_tag(order.avatar, width: "300", height: "200") %>
+          <% else %>
+            <img src="<%= image_path('question.jpg') %>" alt="Sorry, smth went wrong(((">
+          <% end %>
+        </div>
+      </div>
+
       <%= render order %>
     </div>
 
@@ -18,15 +29,16 @@
           <%= link_to "Done", change_order_status_path(order_id: order.id), class: 'button button-yellow' %> 
         <% end %>
       <% end %>
-      <%= link_to t("show-order"), order_path(order.id), class: 'button button-main' %>
+      <%= link_to t('show_more'), order_path(order.id), class: 'button button-main' %>
     </p>
+
     <br/>
   <% end %>
 </div>
 
 <div class="mt-ls">
-    <%= link_to t("back-to-profile"), :back, class: 'button button-yellow' %>
-    <%= link_to t("back-main-page"), root_path, class: 'button button-yellow' %>
+    <%= link_to t('back'), :back, class: 'button button-yellow' %>
+    <%= link_to t('back_to_main'), root_path, class: 'button button-yellow' %>
 </div>
 
 </div>

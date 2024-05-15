@@ -39,15 +39,15 @@
         <p class="title-md"style="color: green"><%= notice %></p>
 
       <div class="exchange-rates">
-        <h2><%= t("exchange-rates") %></h2>
+        <h2><%= t('exchange_rates.title') %></h2>
         <ul>
           <% @exchange_rates.each do |rate| %>
-            <li><span><%= rate['ccy'] %></span> <%= t("to-UAH")%>: <span><%= sprintf('%.2f', rate['buy']) %></span> (<%= t("buy")%>), <span><%= sprintf('%.2f', rate['sale']) %></span> (<%= t("sale")%>)</li>
+            <li><span><%= t("exchange_rates.ccy.#{rate['ccy']}") %></span> <%= t('exchange_rates.to_UAH') %>: <span><%= sprintf('%.2f', rate['buy']) %></span> (<%= t('exchange_rates.buy') %>), <span><%= sprintf('%.2f', rate['sale']) %></span> (<%= t('exchange_rates.sale') %>)</li>
           <% end %>
         </ul>
       </div>
 
-      <%= link_to t("back-main-page"), root_path, class: 'button button-yellow' %>
+      <%= link_to t('back_to_main'), root_path, class: 'button button-yellow' %>
 
     </div>
 </body>

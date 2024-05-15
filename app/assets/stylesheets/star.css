@@ -1,0 +1,59 @@
+.flex {
+    display: flex;
+}
+  
+.gap-x-3 > * + * {
+    margin-left: 0.75rem; 
+}
+
+.mb-4 {
+    margin-bottom: 1rem; 
+}
+
+.w-2 {
+    width: 20px; 
+}
+
+.h-2 {
+    height: 20px; 
+}
+
+.w-8 {
+    width: 30px; 
+}
+
+.h-8 {
+    height: 30px; 
+}
+
+.fill-yellow-400 {
+    fill: rgb(253, 212, 11);
+}
+
+.stroke-yellow-400 {
+    stroke: rgb(253, 212, 11);
+}
+
+.fill-yellow-500 {
+    fill: rgb(176, 148, 7);
+}
+    
+.stroke-yellow-500 {
+    stroke: rgb(176, 148, 7);
+}
+
+.fill-yellow-500:hover {
+    fill: rgb(176, 148, 7);
+}
+
+.stroke-yellow-500:hover {
+    stroke: rgb(10, 248, 200);
+} 
+
+.fill-transparent {
+    fill: transparent;
+}
+
+.stroke-gray-400 {
+    stroke: gray;
+}

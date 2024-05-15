@@ -1,0 +1,18 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+  <h2 class="title-lg mb"><%= t('top_employees') %></h2>
+
+  <% @top_employees.each do |employee_id, rating| %>
+    <% employee_profile = EmployeeProfile.find(employee_id) %>
+    <div class="user-card mt-ls">
+      <%= render employee_profile %>
+    </div>
+    <div class="mt-md mb-ls" style="margin-right: 570px;">
+      <%= link_to t('employees_orders'), best_employees_index_path(employee_profile_id: employee_profile.id), class: 'button button-yellow mr-sm' %>
+    </div>
+  <% end %>
+  <div class="mt-ls">
+    <%= link_to t('back_to_main'), root_path, class: 'button button-main' %>
+  </div>
+</div>
+

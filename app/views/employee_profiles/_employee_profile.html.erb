@@ -1,31 +1,40 @@
 <div id="<%= dom_id employee_profile %>">
   <div class="mt-md">
-    <strong><%= t("first-name") %>:</strong>
+    <strong><%= t('profile_basic_data.first_name') %>:</strong>
     <%= employee_profile.first_name %>
   </div>
 
   <div class="mt-md">
-    <strong><%= t("last-name") %>:</strong>
+    <strong><%= t('profile_basic_data.last_name') %>:</strong>
     <%= employee_profile.last_name %>
   </div>
 
   <div class="mt-md">
-    <strong><%= t("phone") %>:</strong>
+    <strong><%= t('profile_basic_data.phone') %>:</strong>
     <%= employee_profile.phone %>
   </div>
 
   <div class="mt-md">
-    <strong><%= t("date-reg") %>:</strong>
+    <strong><%= t('.date_registration') %>:</strong>
     <%= employee_profile.date_registration %>
   </div>
 
   <div class="mt-md">
-    <strong><%= t("spec") %>:</strong>
-    <%= Specialization.find_by(id: employee_profile.specialization_id).title %>
+    <strong><%= t('.rating') %>:</strong>
+    <%= format("%.2f", employee_profile.rating) %>
   </div>
 
   <div class="mt-md">
-  <strong>Email:</strong>
-  <%= Employee.find_by(id: employee_profile.employee_id).email %>
-</div>
+    <strong><%= t('.specialization') %>:</strong>
+    <% if I18n.locale == :uk %>
+      <%= I18n.t("specialization.specialization_titles.#{Specialization.find_by(id: employee_profile.specialization_id).title.parameterize.underscore}") %>
+    <% else %>
+      <%= Specialization.find_by(id: employee_profile.specialization_id).title %>
+    <% end %>
+  </div>
+
+  <div class="mt-md">
+    <strong>Email:</strong>
+    <%= Employee.find_by(id: employee_profile.employee_id).email %>
+  </div>
 </div>

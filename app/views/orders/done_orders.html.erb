@@ -1,11 +1,11 @@
 <div class="container">
   <div class="dropdown">
-  <button class="dropbtn"><%= t("done") %></button>
+  <button class="dropbtn"><%= t('orders_data.orders_statuses.done') %></button>
   <div class="dropdown-content">
-      <%= link_to t("not-approved"), not_approved_orders_path(employee_profile_id: current_employee.id) %>
-      <%= link_to t("approved"), approved_orders_path(employee_profile_id: current_employee.id) %>
-      <%= link_to t("in-progress"), in_progress_orders_path(employee_profile_id: current_employee.id) %>
-      <%= link_to t("done"), done_orders_path(employee_profile_id: current_employee.id) %>
+      <%= link_to t('orders_data.orders_statuses.not_approved'), not_approved_orders_path(employee_profile_id: current_employee.id) %>
+      <%= link_to t('orders_data.orders_statuses.approved'), approved_orders_path(employee_profile_id: current_employee.id) %>
+      <%= link_to t('orders_data.orders_statuses.in_progress'), in_progress_orders_path(employee_profile_id: current_employee.id) %>
+      <%= link_to t('orders_data.orders_statuses.done'), done_orders_path(employee_profile_id: current_employee.id) %>
   </div>
   </div>
   <br><br>
@@ -16,19 +16,30 @@
   <div id="orders">
     <% @orders.each do |order| %>
       <div class="user-card mt-ls">
+
+        <div class="user-card-img">     
+          <div class="mt-md">
+            <% if order.avatar.attached? %>
+              <%= image_tag(order.avatar, width: "300", height: "200") %>
+            <% else %>
+              <img src="<%= image_path('question.jpg') %>" alt="Sorry, smth went wrong(((">
+            <% end %>
+          </div>
+        </div>
+
         <%= render order %>
       </div>
 
       <p class="mt">
-        <%= link_to t("show-order"), order_path(order.id), class: 'button button-main' %>
+        <%= link_to t('show_more'), order_path(order.id, employee_profile_id: order.employee_profile_id), class: 'button button-main' %>
       </p>
       <br/>
     <% end %>
   </div>
 
   <div class="mt-ls">
-    <%= link_to t("back-to-profile"), employee_profile_path(current_employee), class: 'button button-yellow' %>
-    <%= link_to t("back-main-page"), root_path, class: 'button button-yellow' %>
+    <%= link_to t('show_profile'), employee_profile_path(current_employee), class: 'button button-yellow' %>
+    <%= link_to t('back_to_main'), root_path, class: 'button button-yellow' %>
   </div>
 
 </div>

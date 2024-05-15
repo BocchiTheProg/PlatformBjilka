@@ -8,6 +8,10 @@ class EmployeeProfilesController < ApplicationController
 
   # GET /employee_profiles/1 or /employee_profiles/1.json
   def show
+    # orders = Order.where(employee_profile_id: @employee_profile.id, status_id: Status.find_by(title: "Done").id)
+    # average_rating = orders.average(:rating)
+    # average_rating ||= 0
+    # @employee_profile.update(rating: average_rating)
   end
 
   # GET /employee_profiles/new
@@ -72,6 +76,6 @@ class EmployeeProfilesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def employee_profile_params
-    params.require(:employee_profile).permit(:first_name, :last_name, :phone, :date_registration, :user_id, :specialization_id)
+    params.require(:employee_profile).permit(:first_name, :last_name, :phone, :date_registration, :user_id, :specialization_id, :rating)
   end
 end

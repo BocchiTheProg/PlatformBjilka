@@ -1,11 +1,11 @@
 <div class="container">
-  <h2 class="title-lg mb">Edit My Profile</h2>
+  <h2 class="title-lg mb"><%= t('.title') %></h2>
   <%= render "form", client_profile: @client_profile %>
 
   <br>
 
   <div>
-    <%= link_to t("back-to-profile"), @client_profile, class: 'button button-yellow'%>
-    <%= link_to t("back-main-page"), root_path, class: 'button button-yellow' %> <br />
+    <%= link_to t('show_profile'), @client_profile, class: 'button button-yellow'%>
+    <%= link_to t('back_to_main'), root_path, class: 'button button-yellow' %> <br />
   </div>
 </div>

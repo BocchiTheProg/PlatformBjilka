@@ -1,22 +1,27 @@
 <div id="<%= dom_id client_profile %>">
   <div class="mt-md">
-    <strong><%= t("first-name") %>:</strong>
+    <strong><%= t('profile_basic_data.first_name') %>:</strong>
     <%= client_profile.first_name %>
   </div>
 
   <div class="mt-md">
-    <strong><%= t("last-name") %>:</strong>
+    <strong><%= t('profile_basic_data.last_name') %>:</strong>
     <%= client_profile.last_name %>
   </div>
 
   <div class="mt-md">
-    <strong><%= t("phone") %>:</strong>
+    <strong><%= t('profile_basic_data.phone') %>:</strong>
     <%= client_profile.phone %>
   </div>
 
   <div class="mt-md">
     <strong>Email:</strong>
     <%= @client_profile.client.email %>
+  </div>
+
+  <div class="mt-md">
+    <strong><%= t('.preferred_currency') %>:</strong>
+    <%= @client_profile.currency_type %>
   </div>
 
 </div>

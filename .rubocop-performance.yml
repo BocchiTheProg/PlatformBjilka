@@ -1,1 +1,4 @@
 #.rubocop-performance.yml
+
+Performance/MapMethodChain:
+  Enabled: false

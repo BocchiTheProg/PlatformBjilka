@@ -22,6 +22,8 @@
     *= require alert
     *
     *= require droplist
+    *
+    *= require star
 */
 
 .simple-calendar {
@@ -109,4 +111,3 @@
     background-color: rgb(250, 248, 117);
     border: 3px solid red; 
 }
-

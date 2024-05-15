@@ -41,6 +41,9 @@ Lint/NestedPercentLiteral:
 
 Lint/UselessMethodDefinition:
   Enabled: false
+  
+Lint/DuplicateMethods:
+  Enabled: false
 
 Lint/UnusedMethodArgument:
   Enabled: false
@@ -60,6 +63,9 @@ Metrics/PerceivedComplexity:
   Enabled: false
 
 Metrics/BlockLength:
+  Enabled: false
+  
+Metrics/ClassLength:
   Enabled: false
 
 # Naming
@@ -94,6 +100,9 @@ Style/WordArray:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+  
+Style/NumericPredicate:
   Enabled: false
 
 Style/ClassAndModuleChildren:

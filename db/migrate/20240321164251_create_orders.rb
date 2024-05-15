@@ -8,7 +8,8 @@ class CreateOrders < ActiveRecord::Migration[7.1]
       t.references :urgency, null: false, foreign_key: true
       t.datetime :date_order
       t.references :service, null: false, foreign_key: true
-      t.integer :price
+      t.decimal :price, precision: 10, scale: 2
+      t.integer :rating, null: false, default: 0
 
       t.timestamps
     end
